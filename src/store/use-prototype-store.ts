@@ -9,6 +9,8 @@ interface PrototypeState {
   isMobileSidebarOpen: boolean;
   toggleMobileSidebar: () => void;
   closeMobileSidebar: () => void;
+  isShortsOpen: boolean;
+  setShortsOpen: (open: boolean) => void;
 }
 
 export const usePrototypeStore = create<PrototypeState>((set) => ({
@@ -17,4 +19,6 @@ export const usePrototypeStore = create<PrototypeState>((set) => ({
   isMobileSidebarOpen: false,
   toggleMobileSidebar: () => set((state) => ({ isMobileSidebarOpen: !state.isMobileSidebarOpen })),
   closeMobileSidebar: () => set({ isMobileSidebarOpen: false }),
+   isShortsOpen: false,
+  setShortsOpen: (open) => set({ isShortsOpen: open }),
 }));

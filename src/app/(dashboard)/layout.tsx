@@ -5,7 +5,7 @@ import { Sidebar } from "@/components/dashboard/sidebar";
 import { Header } from "@/components/dashboard/header";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import B2CDashboardLayout from "../(b2c-dashboard)/layout"; // Importing our new B2C layout
-
+import { GlobalShortsPlayer } from "@/components/dashboard/global-shorts-player";
 export default function DashboardLayoutSelector({
   children,
 }: {
@@ -17,6 +17,7 @@ export default function DashboardLayoutSelector({
   // If the user is an Independent Learner, render the dedicated B2C layout.
   if (isB2C) {
     return <B2CDashboardLayout>{children}</B2CDashboardLayout>;
+     <GlobalShortsPlayer />
   }
 
   // Otherwise, render the standard B2B School Portal layout.
@@ -30,6 +31,7 @@ export default function DashboardLayoutSelector({
         </main>
         <MobileNav />
       </div>
+      <GlobalShortsPlayer />
     </div>
   );
 }
