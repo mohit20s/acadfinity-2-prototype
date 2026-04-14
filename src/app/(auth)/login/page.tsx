@@ -17,7 +17,7 @@ export default function LoginPage() {
     e.preventDefault();
     if (loginType === 'b2c') {
       setStoreRole('Independent Learner');
-      router.push('/dashboard');
+      router.push('/lms');
     } else {
       setStoreRole(selectedRole);
       router.push('/select-school');
