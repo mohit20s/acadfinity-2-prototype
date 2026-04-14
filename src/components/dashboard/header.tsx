@@ -3,7 +3,7 @@
 import { Bell } from "lucide-react";
 import { usePrototypeStore, Role } from "@/store/use-prototype-store";
 import { Logo } from "@/components/shared/logo";
-
+import { ProfileDropdown } from "./profile-dropdown";
 export function Header() {
   const { currentRole, setRole } = usePrototypeStore();
 
@@ -51,11 +51,8 @@ export function Header() {
           <Bell className="h-5 w-5 md:h-5 md:w-5" />
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 border-2 border-white"></span>
         </button>
-
-        {/* AVATAR (Hidden on very small mobile to save space, but kept for desktop) */}
-        <div className="hidden sm:flex h-8 w-8 rounded-full bg-primary text-white items-center justify-center text-xs font-black shadow-md">
-          {currentRole.charAt(0)}
-        </div>
+<ProfileDropdown />
+        
       </div>
     </header>
   );

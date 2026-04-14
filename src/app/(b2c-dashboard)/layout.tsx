@@ -18,13 +18,24 @@ function B2CBottomNav() {
 }
 
 // B2C-specific Header Component
+// 1. Add this import at the top of src/app/(b2c-dashboard)/layout.tsx
+import { ProfileDropdown } from "@/components/dashboard/profile-dropdown";
+
+// 2. Replace the old B2CHeader function with this one
 function B2CHeader() {
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 shrink-0">
-      <div className="font-black text-lg text-primary tracking-tighter">Skill Academy</div>
-      <div className="flex items-center gap-2">
-        <button className="relative p-2 text-slate-500 hover:text-primary"><ShoppingCart className="h-5 w-5" /></button>
-        <button className="relative p-2 text-slate-500 hover:text-primary"><UserCircle className="h-6 w-6" /></button>
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shrink-0">
+      <div className="font-black text-xl text-primary tracking-tighter">Skill Academy</div>
+      
+      <div className="flex items-center gap-3">
+        {/* Shopping Cart for B2C */}
+        <button className="relative p-2 text-slate-500 hover:text-primary transition-colors">
+          <ShoppingCart className="h-6 w-6" />
+          <span className="absolute top-1 right-1 h-4 w-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+        </button>
+        
+        {/* REUSED PROFILE DROPDOWN (Includes Logout) */}
+        <ProfileDropdown />
       </div>
     </header>
   );
