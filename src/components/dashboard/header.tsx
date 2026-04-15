@@ -21,33 +21,35 @@ export function Header() {
   const isB2C = currentRole === 'Independent Learner';
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 z-30 shrink-0">
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-3 md:px-8 z-30 shrink-0 w-full overflow-hidden">
       
       {/* LEFT SIDE: Logo + School Info */}
-      <div className="flex items-center gap-3">
-        <div className="shrink-0 scale-90 md:scale-100">
+      <div className="flex items-center shrink-0">
+        <div className="scale-90 md:scale-100 origin-left shrink-0">
            <Logo />
         </div>
         
-        <div className="flex flex-col justify-center border-l border-slate-200 pl-3">
-          <h2 className="text-[11px] md:text-sm font-bold text-slate-900 leading-tight line-clamp-1">
+        {/* HIDDEN ON MOBILE: We hide this text on small screens to save space! */}
+        <div className="hidden sm:flex flex-col justify-center border-l border-slate-200 pl-3 ml-3">
+          <h2 className="text-sm font-bold text-slate-900 leading-tight line-clamp-1">
             {isB2C ? "Personal Account" : "Delhi Public School"}
           </h2>
-          <p className="text-[9px] md:text-xs text-slate-500 font-medium whitespace-nowrap">
+          <p className="text-xs text-slate-500 font-medium whitespace-nowrap">
             {isB2C ? "Learner Hub" : "2024-25"}
           </p>
         </div>
       </div>
 
-      {/* RIGHT SIDE: Role Switcher, Apps, Notifications, Profile */}
-      <div className="flex items-center gap-2 md:gap-4">
+      {/* RIGHT SIDE: Role Switcher, Apps, Profile */}
+      {/* Reduced gaps on mobile to make everything fit tightly */}
+      <div className="flex items-center gap-1.5 sm:gap-4 shrink-0">
         
         {/* ROLE SWITCHER */}
-        <div className="flex items-center bg-amber-50 px-2 py-1 md:px-3 md:py-1.5 rounded-full border border-amber-200 shadow-sm">
+        <div className="flex items-center bg-amber-50 px-1.5 py-1 md:px-3 md:py-1.5 rounded-full border border-amber-200 shadow-sm shrink-0">
           <select 
             value={currentRole}
             onChange={(e) => setRole(e.target.value as Role)}
-            className="text-[10px] md:text-xs font-black text-amber-900 bg-transparent outline-none cursor-pointer max-w-[70px] md:max-w-[120px] truncate"
+            className="text-[10px] md:text-xs font-black text-amber-900 bg-transparent outline-none cursor-pointer w-[65px] sm:w-auto md:max-w-[120px] truncate"
           >
             {roles.map(role => (
               <option key={role} value={role}>{role}</option>
@@ -55,12 +57,12 @@ export function Header() {
           </select>
         </div>
 
-        {/* NEW: APPS DROPDOWN (ONLY FOR B2B SCHOOL USERS) */}
+        {/* APPS DROPDOWN (ONLY FOR B2B SCHOOL USERS) */}
         {!isB2C && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="relative p-1.5 text-slate-400 hover:text-primary transition-colors focus:outline-none">
-                <LayoutGrid className="h-5 w-5 md:h-5 md:w-5" />
+              <button className="relative p-1.5 text-slate-400 hover:text-primary transition-colors focus:outline-none shrink-0">
+                <LayoutGrid className="h-5 w-5" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 mt-2 rounded-xl p-2 z-50 bg-white shadow-xl border-slate-100">
@@ -89,14 +91,16 @@ export function Header() {
           </DropdownMenu>
         )}
 
-        {/* NOTIFICATION BELL */}
-        <button className="relative p-1.5 text-slate-400 hover:text-slate-600 transition-colors hidden sm:block">
-          <Bell className="h-5 w-5 md:h-5 md:w-5" />
+        {/* NOTIFICATION BELL (Hidden on mobile to save space) */}
+        <button className="relative p-1.5 text-slate-400 hover:text-slate-600 transition-colors hidden sm:block shrink-0">
+          <Bell className="h-5 w-5" />
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 border-2 border-white"></span>
         </button>
 
         {/* PROFILE DROPDOWN */}
-        <ProfileDropdown />
+        <div className="shrink-0 ml-1">
+          <ProfileDropdown />
+        </div>
         
       </div>
     </header>
