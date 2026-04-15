@@ -1,9 +1,19 @@
 "use client";
 
-import { Bell } from "lucide-react";
+import { Bell, LayoutGrid, Database, Activity } from "lucide-react";
 import { usePrototypeStore, Role } from "@/store/use-prototype-store";
 import { Logo } from "@/components/shared/logo";
 import { ProfileDropdown } from "./profile-dropdown";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+
 export function Header() {
   const { currentRole, setRole } = usePrototypeStore();
 
@@ -13,13 +23,12 @@ export function Header() {
   return (
     <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 z-30 shrink-0">
       
-      {/* LEFT SIDE: Logo + School Info (Now visible on mobile) */}
+      {/* LEFT SIDE: Logo + School Info */}
       <div className="flex items-center gap-3">
         <div className="shrink-0 scale-90 md:scale-100">
            <Logo />
         </div>
         
-        {/* We use a vertical stack that gets smaller on mobile */}
         <div className="flex flex-col justify-center border-l border-slate-200 pl-3">
           <h2 className="text-[11px] md:text-sm font-bold text-slate-900 leading-tight line-clamp-1">
             {isB2C ? "Personal Account" : "Delhi Public School"}
@@ -30,10 +39,10 @@ export function Header() {
         </div>
       </div>
 
-      {/* RIGHT SIDE: Role Switcher & Notifications */}
+      {/* RIGHT SIDE: Role Switcher, Apps, Notifications, Profile */}
       <div className="flex items-center gap-2 md:gap-4">
         
-        {/* THE ROLE SWITCHER (Fixed for mobile visibility) */}
+        {/* ROLE SWITCHER */}
         <div className="flex items-center bg-amber-50 px-2 py-1 md:px-3 md:py-1.5 rounded-full border border-amber-200 shadow-sm">
           <select 
             value={currentRole}
@@ -46,12 +55,48 @@ export function Header() {
           </select>
         </div>
 
+        {/* NEW: APPS DROPDOWN (ONLY FOR B2B SCHOOL USERS) */}
+        {!isB2C && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="relative p-1.5 text-slate-400 hover:text-primary transition-colors focus:outline-none">
+                <LayoutGrid className="h-5 w-5 md:h-5 md:w-5" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56 mt-2 rounded-xl p-2 z-50 bg-white shadow-xl border-slate-100">
+              <DropdownMenuLabel className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">School Operations</DropdownMenuLabel>
+              <DropdownMenuSeparator className="my-2" />
+              
+              <DropdownMenuItem asChild className="cursor-pointer font-bold rounded-lg py-3 hover:bg-slate-50 transition-colors">
+                <Link href="/erp">
+                  <div className="h-8 w-8 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center mr-3 shrink-0">
+                    <Database className="h-4 w-4" />
+                  </div>
+                  ERP Dashboard
+                </Link>
+              </DropdownMenuItem>
+              
+              <DropdownMenuItem asChild className="cursor-pointer font-bold rounded-lg py-3 hover:bg-slate-50 transition-colors mt-1">
+                <Link href="/analytics">
+                  <div className="h-8 w-8 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center mr-3 shrink-0">
+                    <Activity className="h-4 w-4" />
+                  </div>
+                  Analytics Hub
+                </Link>
+              </DropdownMenuItem>
+
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
+
         {/* NOTIFICATION BELL */}
-        <button className="relative p-1.5 text-slate-400 hover:text-slate-600 transition-colors">
+        <button className="relative p-1.5 text-slate-400 hover:text-slate-600 transition-colors hidden sm:block">
           <Bell className="h-5 w-5 md:h-5 md:w-5" />
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 border-2 border-white"></span>
         </button>
-<ProfileDropdown />
+
+        {/* PROFILE DROPDOWN */}
+        <ProfileDropdown />
         
       </div>
     </header>

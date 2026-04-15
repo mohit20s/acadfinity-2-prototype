@@ -14,7 +14,7 @@ export function MobileNav() {
   // We added Library back to this list!
   const navItems = [
     { name: "Home", href: "/dashboard", icon: LayoutDashboard, show: true },
-    { name: "ERP", href: "/erp", icon: Database, show: !isB2C },
+    
     { name: "LMS", href: "/lms", icon: BookOpen, show: true },
     { name: "Shop", href: "/marketplace", icon: ShoppingBag, show: true },
     { name: "Library", href: "/library", icon: Library, show: true },
