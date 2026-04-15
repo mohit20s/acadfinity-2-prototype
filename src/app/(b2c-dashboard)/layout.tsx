@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingCart, UserCircle, PlayCircle, Store, BookOpen, Library } from "lucide-react";
+import { ShoppingCart, UserCircle, PlayCircle, Store, BookOpen, ClipboardCheck } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePrototypeStore } from "@/store/use-prototype-store";
@@ -8,23 +8,24 @@ import { cn } from "@/lib/utils";
 import { ProfileDropdown } from "@/components/dashboard/profile-dropdown";
 import { GlobalShortsPlayer } from "@/components/dashboard/global-shorts-player";
 
-// 1. MOBILE BOTTOM NAV (Fixed Clickable Area & Layout)
+// 1. MOBILE BOTTOM NAV (Updated to include Diagnostics)
 function B2CBottomNav() {
   const pathname = usePathname();
   const { setShortsOpen } = usePrototypeStore();
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex items-center justify-between h-16 z-50 pb-safe-area-inset-bottom shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.05)] px-2">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex items-center justify-between h-16 z-50 pb-safe-area-inset-bottom shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.05)] px-1 sm:px-2">
       
-      {/* Left Items (LMS & Library) */}
+      {/* Left Items (LMS & Diagnostics) */}
       <div className="flex flex-1 justify-around h-full">
-        <Link href="/lms" className={cn("flex flex-col items-center justify-center w-full h-full space-y-1 text-[10px] font-bold transition-colors", pathname === "/lms" ? "text-primary" : "text-slate-500")}>
+        <Link href="/lms" className={cn("flex flex-col items-center justify-center w-full h-full space-y-1 text-[9px] font-black transition-colors", pathname === "/lms" ? "text-primary" : "text-slate-500")}>
           <BookOpen className={cn("h-5 w-5", pathname === "/lms" && "fill-primary/20 text-primary")} />
-          <span>LMS</span>
+          <span className="uppercase tracking-widest">Learn</span>
         </Link>
-        <Link href="/library" className={cn("flex flex-col items-center justify-center w-full h-full space-y-1 text-[10px] font-bold transition-colors", pathname === "/library" ? "text-primary" : "text-slate-500")}>
-          <Library className={cn("h-5 w-5", pathname === "/library" && "fill-primary/20 text-primary")} />
-          <span>Library</span>
+        {/* NEW: Diagnostics added back for B2C */}
+        <Link href="/library" className={cn("flex flex-col items-center justify-center w-full h-full space-y-1 text-[9px] font-black transition-colors", pathname === "/library" ? "text-primary" : "text-slate-500")}>
+          <ClipboardCheck className={cn("h-5 w-5", pathname === "/library" && "fill-primary/20 text-primary")} />
+          <span className="uppercase tracking-widest">Assess</span>
         </Link>
       </div>
 
@@ -40,11 +41,11 @@ function B2CBottomNav() {
 
       {/* Right Items (Store & Empty spacer to balance) */}
       <div className="flex flex-1 justify-around h-full">
-        <Link href="/marketplace" className={cn("flex flex-col items-center justify-center w-full h-full space-y-1 text-[10px] font-bold transition-colors", pathname === "/marketplace" ? "text-primary" : "text-slate-500")}>
+        <Link href="/marketplace" className={cn("flex flex-col items-center justify-center w-full h-full space-y-1 text-[9px] font-black transition-colors", pathname === "/marketplace" ? "text-primary" : "text-slate-500")}>
           <Store className={cn("h-5 w-5", pathname === "/marketplace" && "fill-primary/20 text-primary")} />
-          <span>Store</span>
+          <span className="uppercase tracking-widest">Store</span>
         </Link>
-        {/* This invisible spacer balances the layout so the Shorts button stays dead center */}
+        {/* Invisible spacer balances the layout so the Shorts button stays dead center */}
         <div className="w-full h-full"></div>
       </div>
 
@@ -52,16 +53,16 @@ function B2CBottomNav() {
   );
 }
 
-// 2. DESKTOP & MOBILE HEADER (Added Desktop Links!)
+// 2. DESKTOP & MOBILE HEADER (Updated to include Diagnostics)
 function B2CHeader() {
   const pathname = usePathname();
   const { setShortsOpen } = usePrototypeStore();
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shrink-0 z-30">
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shrink-0 z-30 w-full">
       
       {/* Logo Area */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 shrink-0">
         <div className="font-black text-xl text-primary tracking-tighter">Skill Academy</div>
         
         {/* DESKTOP ONLY: Top Navigation Links */}
@@ -69,17 +70,18 @@ function B2CHeader() {
           <Link href="/lms" className={cn("text-sm font-bold transition-colors", pathname === "/lms" ? "text-primary" : "text-slate-500 hover:text-slate-900")}>
             Learning Hub
           </Link>
-          <Link href="/library" className={cn("text-sm font-bold transition-colors", pathname === "/library" ? "text-primary" : "text-slate-500 hover:text-slate-900")}>
-            Digital Library
-          </Link>
           <Link href="/marketplace" className={cn("text-sm font-bold transition-colors", pathname === "/marketplace" ? "text-primary" : "text-slate-500 hover:text-slate-900")}>
             Course Store
+          </Link>
+          {/* NEW: Diagnostics added back for Desktop B2C */}
+          <Link href="/library" className={cn("text-sm font-bold transition-colors flex items-center gap-1.5", pathname === "/library" ? "text-emerald-600" : "text-slate-500 hover:text-emerald-600")}>
+            <ClipboardCheck className="h-4 w-4" /> AI Diagnostics
           </Link>
           
           {/* Desktop Shorts Button */}
           <button 
             onClick={() => setShortsOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors text-xs font-black tracking-widest uppercase"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors text-xs font-black tracking-widest uppercase ml-2"
           >
             <PlayCircle className="h-4 w-4" /> Shorts
           </button>
@@ -87,7 +89,7 @@ function B2CHeader() {
       </div>
       
       {/* Right Actions (Cart & Profile) */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 shrink-0 ml-4">
         <button className="relative p-2 text-slate-500 hover:text-primary transition-colors">
           <ShoppingCart className="h-6 w-6" />
           <span className="absolute top-1 right-1 h-4 w-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
@@ -107,9 +109,9 @@ export default function B2CDashboardLayout({
   return (
     <>
       <div className="flex h-screen overflow-hidden bg-slate-50">
-        <div className="flex flex-col flex-1 overflow-hidden relative">
+        <div className="flex flex-col flex-1 overflow-hidden relative w-full">
           <B2CHeader />
-          <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-24 md:pb-8">
+          <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-24 md:pb-8 w-full">
             {children}
           </main>
           <B2CBottomNav />

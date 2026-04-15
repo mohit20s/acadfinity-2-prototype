@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
-import { Home, Database, BookOpen, ShoppingBag, Library, Settings, X } from "lucide-react";
+import { Home, Database, BookOpen, ShoppingBag, Library, Settings, X,  ClipboardCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePrototypeStore } from "@/store/use-prototype-store";
 
@@ -19,7 +19,7 @@ export function Sidebar() {
     
     { name: "Skill Academy (LMS)", href: "/lms", icon: BookOpen, show: true },
     { name: "Marketplace", href: "/marketplace", icon: ShoppingBag, show: true },
-    { name: "Books & Toys", href: "/library", icon: Library, show: true },
+    { name: "Diagnostics", href: "/library", icon: ClipboardCheck, show: true },
   ].filter(item => item.show);
 
   return (

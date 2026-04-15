@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BookOpen, ShoppingBag, Database, PlayCircle, Library } from "lucide-react";
+import { LayoutDashboard, BookOpen, ShoppingBag, Database, PlayCircle, Library, ClipboardCheck } from "lucide-react";
 import { usePrototypeStore } from "@/store/use-prototype-store";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ export function MobileNav() {
     
     { name: "LMS", href: "/lms", icon: BookOpen, show: true },
     { name: "Shop", href: "/marketplace", icon: ShoppingBag, show: true },
-    { name: "Library", href: "/library", icon: Library, show: true },
+    { name: "Diagnostics", href: "/library", icon: ClipboardCheck, show: true },
   ].filter(item => item.show);
 
   // Split items so the Shorts button can sit in the middle

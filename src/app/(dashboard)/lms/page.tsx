@@ -5,84 +5,160 @@ import {
   PlayCircle, FileText, Download, Calendar, Award, 
   MessageCircle, HelpCircle, Star, Plus, ArrowLeft,
   CheckCircle2, Lock, Heart, Share2, Bookmark, Flame, 
-  Search, Video, Clock, Send, ChevronRight, PenLine, List
+  Search, Video, Clock, Send, ChevronRight, PenLine, List, Users
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { usePrototypeStore } from "@/store/use-prototype-store";
+import Link from "next/link";
 
-// Mock Data for the Course Store
-const storeCourses = [
-  { id: 1, title: "Advanced Python & AI Basics", target: "Students", type: "Full Course", price: "₹2,500", rating: 4.8, enrolled: 340, image: "bg-blue-100 text-blue-600" },
-  { id: 2, title: "Digital Wellness for Families", target: "Parents", type: "Guidance", price: "Free", rating: 4.9, enrolled: 850, image: "bg-teal-100 text-teal-600" },
-  { id: 3, title: "21st Century Leadership", target: "Teachers", type: "Upskill", price: "₹1,200", rating: 4.7, enrolled: 120, image: "bg-amber-100 text-amber-600" },
-  { id: 4, title: "Financial Literacy 101", target: "All", type: "Full Course", price: "₹999", rating: 4.6, enrolled: 530, image: "bg-emerald-100 text-emerald-600" },
+
+// --- MOCK DATA FOR CAROUSELS ---
+const myCourses = [
+  { id: 1, title: "Python Logic & Control", progress: 40, image: "bg-blue-600" },
+  { id: 2, title: "Leadership for Educators", progress: 85, image: "bg-amber-600" },
+];
+const recommendedCourses = [
+  { id: 3, title: "AI in the Classroom", author: "Dr. Malik", duration: "4h 30m", image: "bg-indigo-600" },
+  { id: 4, title: "Financial Wellness for Parents", author: "Priya S.", duration: "1h 15m", image: "bg-emerald-600" },
+  { id: 5, title: "Intro to Robotics", author: "Tech Team", duration: "6h", image: "bg-slate-800" },
+];
+const newOutskillCourses = [
+  { id: 6, title: "Graphic Design Masterclass", author: "Sarah P.", duration: "8h", image: "bg-rose-600" },
+  { id: 7, title: "Public Speaking for Students", author: "Capt. Vyas", duration: "2h", image: "bg-sky-600" },
+  { id: 8, title: "Intro to Web Development", author: "Arun K.", duration: "12h", image: "bg-purple-600" },
 ];
 
 export default function LMSPage() {
-  const [view, setView] = useState<'store' | 'journey' | 'shorts'>('store');
+  const [view, setView] = useState<'store' | 'journey' | 'shorts' | 'purchase'>('store');
   const [activeTab, setActiveTab] = useState('qa');
   const [progress, setProgress] = useState(40);
+  const { currentRole } = usePrototypeStore();
 
-  // --- VIEW 1: THE COURSE STORE ---
+  const isAdmin = currentRole === "Director" || currentRole === "School Admin" || currentRole === "Principal";
+
+  // --- VIEW 1: THE NEW SIDE-SCROLLING COURSE STORE ---
   if (view === 'store') {
     return (
-      <div className="space-y-6 animate-in fade-in duration-500 pb-10">
+      <div className="space-y-10 animate-in fade-in duration-500 pb-24">
+        
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900">Skill Academy & LMS</h1>
-            <p className="text-sm text-slate-500">Create, sell, and track learning journeys for your ecosystem.</p>
+            <h1 className="text-2xl font-black tracking-tight text-slate-900">Skill Academy</h1>
+            <p className="text-sm font-medium text-slate-500">Your central hub for learning and upskilling.</p>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
-            <Plus className="h-4 w-4 mr-2" /> Create Course
-          </Button>
         </div>
 
-        {/* Seekho-style 'Skill Bites' Banner */}
-        <div 
-          onClick={() => setView('shorts')}
-          className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 cursor-pointer hover:shadow-lg hover:scale-[1.01] transition-all relative overflow-hidden"
-        >
-          <div className="absolute right-0 top-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-3 uppercase tracking-wider">
-              <Flame className="h-4 w-4" /> Skill Bites
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Learn in 60 Seconds</h2>
-            <p className="text-slate-400 max-w-md text-sm sm:text-base">
-              Swipe through bite-sized upskilling videos from top experts.
-            </p>
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+             <h2 className="text-xl font-black tracking-tight text-slate-900">Continue Your Journey</h2>
           </div>
-          <Button className="relative z-10 rounded-full h-12 px-8 bg-white text-slate-900 hover:bg-slate-100 font-bold shrink-0">
-            Watch Now <PlayCircle className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide snap-x -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
+            {myCourses.map((course) => (
+              <div key={course.id} onClick={() => setView('journey')} className="min-w-[280px] md:min-w-[320px] snap-start bg-white rounded-3xl border-2 border-slate-100 shadow-sm overflow-hidden group hover:border-primary/30 transition-all cursor-pointer">
+                 <div className={cn("h-40 w-full relative flex items-center justify-center", course.image)}>
+                    <PlayCircle className="h-12 w-12 text-white/50 group-hover:scale-110 group-hover:text-white transition-all" />
+                 </div>
+                 <div className="p-5">
+                    <h3 className="font-black text-slate-900 text-lg leading-tight mb-3">{course.title}</h3>
+                    <div className="flex items-center gap-2">
+                       <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div className="h-full bg-primary" style={{ width: `${course.progress}%` }}></div></div>
+                       <span className="text-[10px] font-black text-slate-400">{course.progress}%</span>
+                    </div>
+                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <h2 className="text-lg font-bold text-slate-900 mb-4">Featured Deep-Dive Journeys</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {storeCourses.map((course) => (
-            <div key={course.id} className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col group hover:border-primary/50 transition-colors cursor-pointer" onClick={() => setView('journey')}>
-              <div className={`h-32 flex items-center justify-center ${course.image}`}>
-                <PlayCircle className="h-10 w-10 opacity-50 group-hover:scale-110 transition-transform text-white" />
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+             <h2 className="text-xl font-black tracking-tight text-slate-900">Recommended For You</h2>
+          </div>
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide snap-x -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
+            {recommendedCourses.map((course) => (
+              <div key={course.id} onClick={() => setView('purchase')} className="min-w-[220px] snap-start bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden group hover:border-primary/30 transition-all cursor-pointer">
+                 <div className={cn("h-28 w-full relative", course.image)}></div>
+                 <div className="p-4">
+                    <h3 className="font-bold text-slate-900 text-sm leading-tight mb-1 truncate">{course.title}</h3>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase">{course.author}</p>
+                 </div>
               </div>
-              <div className="p-4 flex flex-col flex-1">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded-full">{course.type}</span>
-                  <span className="text-xs font-semibold text-primary">{course.price}</span>
-                </div>
-                <h3 className="font-bold text-slate-900 mb-1 leading-tight">{course.title}</h3>
-                <div className="flex items-center gap-1 text-[10px] text-slate-500 mt-auto pt-4">
-                  <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                  <span className="font-bold text-slate-700">{course.rating}</span>
-                  <span className="ml-2">{course.enrolled} Enrolled</span>
-                </div>
+            ))}
+          </div>
+        </section>
+        
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+             <h2 className="text-xl font-black tracking-tight text-slate-900">New Outskill Courses</h2>
+          </div>
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide snap-x -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
+            {newOutskillCourses.map((course) => (
+              <div key={course.id} onClick={() => setView('purchase')} className="min-w-[280px] snap-start bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden group hover:border-primary/30 transition-all cursor-pointer flex items-center gap-4 p-4">
+                 <div className={cn("h-20 w-20 rounded-2xl shrink-0 flex items-center justify-center", course.image)}>
+                    <PlayCircle className="h-8 w-8 text-white/80" />
+                 </div>
+                 <div><h3 className="font-bold text-slate-900 leading-tight">{course.title}</h3><p className="text-xs text-slate-500 font-medium">{course.author}</p></div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </section>
       </div>
     );
   }
 
+  if (view === 'purchase') {
+    return (
+      <div className="animate-in fade-in duration-300 pb-24">
+        <Button variant="ghost" onClick={() => setView('store')} className="mb-4 font-bold text-slate-500 hover:text-slate-900">
+          <ArrowLeft className="h-4 w-4 mr-2" /> Back to Academy
+        </Button>
+        <div className="relative flex flex-col lg:flex-row gap-8">
+          <div className="flex-1 space-y-10">
+            <section>
+              <h1 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 mb-4">Graphic Design Masterclass</h1>
+              <p className="text-lg text-slate-600 font-medium mb-6">Learn Adobe Photoshop, Illustrator, and Figma to build a professional portfolio.</p>
+            </section>
+            <section className="p-8 border-2 border-slate-100 rounded-3xl bg-white">
+              <h2 className="text-xl font-black mb-4">What you'll learn</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-1" /><p className="font-medium text-slate-700">Master Adobe Photoshop and Illustrator.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-1" /><p className="font-medium text-slate-700">Design logos and branding packages.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-1" /><p className="font-medium text-slate-700">Create responsive UI/UX designs in Figma.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-1" /><p className="font-medium text-slate-700">Build a professional portfolio.</p></div>
+              </div>
+            </section>
+            <section>
+              <h2 className="text-xl font-black mb-4">Course Content</h2>
+              <div className="space-y-2">
+                <div className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between"><p className="font-bold text-slate-900">Section 1: Design Principles</p></div>
+                <div className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between"><p className="font-bold text-slate-900">Section 2: Adobe Illustrator</p></div>
+                <div className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between"><p className="font-bold text-slate-900">Section 3: UI/UX with Figma</p></div>
+              </div>
+            </section>
+          </div>
+          <div className="w-full lg:w-80 shrink-0">
+            <div className="lg:sticky top-24 space-y-4 bg-white rounded-3xl border-2 border-slate-100 shadow-xl shadow-slate-200/50 overflow-hidden">
+              <div className="aspect-video bg-rose-600 flex items-center justify-center relative group">
+                <PlayCircle className="h-12 w-12 text-white/70 group-hover:text-white transition-colors cursor-pointer" />
+              </div>
+              <div className="p-6 pt-2 space-y-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-black text-slate-900">₹1,999</span>
+                  <span className="text-slate-400 font-bold line-through">₹4,999</span>
+                </div>
+                <Button onClick={() => setView('journey')} className="w-full h-12 text-md font-black shadow-lg">Buy Now & Enroll</Button>
+                <div className="pt-4 border-t space-y-2 text-sm font-medium text-slate-700">
+                  <div className="flex items-center gap-2"><Video className="h-4 w-4 text-slate-400" />8 hours on-demand video</div>
+                  <div className="flex items-center gap-2"><Award className="h-4 w-4 text-slate-400" />Certificate of completion</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
  // --- VIEW 2: SEEKHO/SHORTS VERTICAL VIDEO PLAYER ---
   if (view === 'shorts') {
     return (
