@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingCart, UserCircle, PlayCircle, Store, BookOpen, ClipboardCheck } from "lucide-react";
+import { ShoppingCart, UserCircle, PlayCircle, Store, BookOpen, ClipboardCheck, Bell } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePrototypeStore } from "@/store/use-prototype-store";
@@ -88,12 +88,21 @@ function B2CHeader() {
         </nav>
       </div>
       
-      {/* Right Actions (Cart & Profile) */}
-      <div className="flex items-center gap-3 shrink-0 ml-4">
-        <button className="relative p-2 text-slate-500 hover:text-primary transition-colors">
+      {/* Right Actions (Notifications,Cart & Profile) */}
+     <div className="flex items-center gap-3 shrink-0 ml-4">
+        
+        <button className="relative p-2 text-slate-500 hover:text-primary transition-colors hidden sm:block">
           <ShoppingCart className="h-6 w-6" />
           <span className="absolute top-1 right-1 h-4 w-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
         </button>
+         <button 
+          onClick={() => setShortsOpen(false) || usePrototypeStore.getState().setNotificationsOpen(true)}
+          className="relative p-2 text-slate-500 hover:text-primary transition-colors"
+        >
+          <Bell className="h-6 w-6" />
+          <span className="absolute top-1 right-1 h-3 w-3 bg-rose-500 border-2 border-white rounded-full animate-pulse"></span>
+        </button>
+
         <ProfileDropdown />
       </div>
     </header>

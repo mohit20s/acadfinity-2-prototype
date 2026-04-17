@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 // Expanded roles to include specific admins and B2C users
-export type Role = 'Director' | 'Principal' | 'School Admin' | 'Teacher' | 'Parent' | 'Student' | 'Independent Learner';
+export type Role = 'Director' | 'Principal' | 'Educational Institute Admin' | 'Teacher' | 'Parent' | 'Student' | 'Independent Learner';
 
 interface PrototypeState {
   currentRole: Role;
@@ -11,6 +11,9 @@ interface PrototypeState {
   closeMobileSidebar: () => void;
   isShortsOpen: boolean;
   setShortsOpen: (open: boolean) => void;
+   // NEW: Notifications State
+  isNotificationsOpen: boolean;
+  setNotificationsOpen: (open: boolean) => void;
 }
 
 export const usePrototypeStore = create<PrototypeState>((set) => ({
@@ -21,4 +24,6 @@ export const usePrototypeStore = create<PrototypeState>((set) => ({
   closeMobileSidebar: () => set({ isMobileSidebarOpen: false }),
    isShortsOpen: false,
   setShortsOpen: (open) => set({ isShortsOpen: open }),
+   isNotificationsOpen: false,
+  setNotificationsOpen: (open) => set({ isNotificationsOpen: open }),
 }));

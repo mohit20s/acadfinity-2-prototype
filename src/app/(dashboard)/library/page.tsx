@@ -8,7 +8,7 @@ import { usePrototypeStore } from '@/store/use-prototype-store';
 
 // Diagnostic Plans
 const diagnosticPlans = [
-  { id: 'school', title: "Institute Health Check", target: "For Directors & Principals", price: "₹4,999", desc: "A complete AI audit of school operations, academics, and finances.", icon: Building, color: "blue" },
+  { id: 'Educational Institute', title: "Institute Health Check", target: "For Directors & Principals", price: "₹4,999", desc: "A complete AI audit of Educational Institute operations, academics, and finances.", icon: Building, color: "blue" },
   { id: 'teacher', title: "Educator Effectiveness", target: "For Teachers", price: "₹999", desc: "Analyze teaching methodologies and get personalized upskilling paths.", icon: Users, color: "emerald" },
   { id: 'student', title: "Student Learning Gap", target: "For Students & Parents", price: "₹499", desc: "Identify academic weak points and get curated course recommendations.", icon: GraduationCap, color: "amber" },
 ];
@@ -176,7 +176,7 @@ export default function DiagnosticToolPage() {
       <div className="bg-white p-8 md:p-12 rounded-[2rem] border-2 border-slate-100 shadow-xl shadow-slate-200/50">
         {step === 2 && <div className="space-y-6">
           <div className="flex items-center gap-3 mb-8"><div className="h-12 w-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center"><Building className="h-6 w-6" /></div><h2 className="text-2xl font-black text-slate-900">Demographics</h2></div>
-          <div><label className="text-sm font-black text-slate-700 mb-2 block">Number of Students / Learner Age</label><select className="w-full h-14 px-4 border-2 border-slate-200 rounded-xl font-medium text-slate-600 outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"><option>Select an option...</option><option>500-1000</option><option>High School</option></select></div>
+          <div><label className="text-sm font-black text-slate-700 mb-2 block">Number of Students / Learner Age</label><select className="w-full h-14 px-4 border-2 border-slate-200 rounded-xl font-medium text-slate-600 outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"><option>Select an option...</option><option>500-1000</option><option>High Educational Institute</option></select></div>
         </div>}
         
         {step === 3 && <div className="space-y-6">

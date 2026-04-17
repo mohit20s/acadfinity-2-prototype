@@ -1,6 +1,6 @@
 # Acadfinity 2.0 - High-Quality Clickable Prototype
 
-This repository contains the frontend prototype for Acadfinity 2.0, a next-generation SaaS platform for the K–12 school ecosystem. This prototype is built as a responsive website with a mobile-app-like experience, designed for demos, UI/UX validation, and frontend planning before backend development.
+This repository contains the frontend prototype for Acadfinity 2.0, a next-generation SaaS platform for the K–12 Educational Institute ecosystem. This prototype is built as a responsive website with a mobile-app-like experience, designed for demos, UI/UX validation, and frontend planning before backend development.
 
 ## Purpose
 

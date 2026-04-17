@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
-import { Home, Database, BookOpen, ShoppingBag, Library, Settings, X,  ClipboardCheck } from "lucide-react";
+import { Home, Database, BookOpen, ShoppingBag, Library, Settings, X,  ClipboardCheck, FileText, } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePrototypeStore } from "@/store/use-prototype-store";
 
@@ -16,7 +16,7 @@ export function Sidebar() {
   // Dynamic navigation array. ERP is hidden if the user is B2C.
   const navItems = [
     { name: "Home", href: "/dashboard", icon: Home, show: true },
-    
+   
     { name: "Skill Academy (LMS)", href: "/lms", icon: BookOpen, show: true },
     { name: "Marketplace", href: "/marketplace", icon: ShoppingBag, show: true },
     { name: "Diagnostics", href: "/library", icon: ClipboardCheck, show: true },

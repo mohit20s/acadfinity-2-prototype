@@ -43,7 +43,7 @@ export default function DiscoveryHomePage() {
                <span className="text-xs font-black uppercase tracking-[0.2em]">New For You</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-black tracking-tighter mb-2">Hello, {currentRole}!</h1>
-            <p className="text-slate-400 text-sm md:text-base max-w-md font-medium mb-6">Explore new courses, toys, and school essentials curated just for your profile.</p>
+            <p className="text-slate-400 text-sm md:text-base max-w-md font-medium mb-6">Explore new courses, toys, and Educational Institute essentials curated just for your profile.</p>
             <Button onClick={() => setShortsOpen(true)} className="rounded-full font-black px-6 shadow-xl shadow-primary/20">
                START WATCHING <PlayCircle className="ml-2 h-4 w-4" />
             </Button>

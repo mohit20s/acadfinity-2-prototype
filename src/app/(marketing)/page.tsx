@@ -40,15 +40,15 @@ export default function PublicHomePage() {
               </div>
               <h1 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 leading-tight">Welcome to Acadfinity.</h1>
               <p className="text-slate-300 text-sm md:text-base max-w-lg font-medium mb-8">
-                Explore courses, procure school supplies, or access the digital library. 
-                Whether you are a School or an Independent Learner, everything is here.
+                Explore courses, procure Educational Institute supplies, or access the digital library. 
+                Whether you are a Educational Institute or an Independent Learner, everything is here.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                  <Button asChild className="rounded-full font-black px-8 h-12 shadow-xl shadow-primary/20">
                     <Link href="/login">Get Started <ChevronRight className="ml-2 h-4 w-4" /></Link>
                  </Button>
                  <Button asChild variant="outline" className="rounded-full font-black px-8 h-12 bg-transparent border-white/20 text-white hover:bg-white hover:text-slate-900">
-                    <Link href="/solutions">View School Modules</Link>
+                    <Link href="/solutions">View Educational Institute Modules</Link>
                  </Button>
               </div>
            </div>

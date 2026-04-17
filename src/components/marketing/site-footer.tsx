@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div className="flex flex-col gap-4">
             <Logo />
             <p className="text-sm text-muted-foreground mt-2">
-              The next-generation education ecosystem enabling sustainable growth for K-12 schools.
+              The next-generation education ecosystem enabling sustainable growth for K-12 Educational Institutes.
             </p>
           </div>
           <div>

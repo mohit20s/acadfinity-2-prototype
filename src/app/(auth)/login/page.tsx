@@ -8,7 +8,7 @@ import { usePrototypeStore, Role } from "@/store/use-prototype-store";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [loginType, setLoginType] = useState<'school' | 'b2c'>('school');
+  const [loginType, setLoginType] = useState<'Educational Institute' | 'b2c'>('Educational Institute');
   const [selectedRole, setSelectedRole] = useState<Role>('Parent');
   const setStoreRole = usePrototypeStore((state) => state.setRole);
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function LoginPage() {
       router.push('/lms');
     } else {
       setStoreRole(selectedRole);
-      router.push('/select-school');
+      router.push('/select-institute')
     }
   };
 
@@ -34,12 +34,12 @@ export default function LoginPage() {
       {/* Login Type Toggle */}
       <div className="flex p-1 bg-slate-100 rounded-lg mb-6">
         <button
-          onClick={() => setLoginType('school')}
+          onClick={() => setLoginType('Educational Institute')}
           className={`flex-1 flex items-center justify-center gap-2 py-2 text-sm font-semibold rounded-md transition-all ${
-            loginType === 'school' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'
+            loginType === 'Educational Institute' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'
           }`}
         >
-          <Building2 className="h-4 w-4" /> School Portal
+          <Building2 className="h-4 w-4" /> Institute Portal
         </button>
         <button
           onClick={() => setLoginType('b2c')}
@@ -52,7 +52,7 @@ export default function LoginPage() {
       </div>
 
       <form onSubmit={handleLogin} className="space-y-4">
-        {loginType === 'school' && (
+        {loginType === 'Educational Institute' && (
           <div className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-300">
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-700">I am logging in as a:</label>
@@ -64,7 +64,7 @@ export default function LoginPage() {
                 <option value="Parent">Parent</option>
                 <option value="Student">Student</option>
                 <option value="Teacher">Teacher</option>
-                <option value="School Admin">School Admin</option>
+                <option value="Educational Institute Admin">Educational Institute Admin</option>
                 <option value="Principal">Principal</option>
                 <option value="Director">Director</option>
               </select>
@@ -75,7 +75,7 @@ export default function LoginPage() {
         {loginType === 'b2c' && (
           <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-lg mb-4 animate-in fade-in slide-in-from-right-4 duration-300">
             <p className="text-sm text-emerald-800 font-medium text-center">
-              Access outskill courses, toys, and library books directly, no school affiliation required!
+              Access outskill courses, toys, and library books directly, no Educational Institute affiliation required!
             </p>
           </div>
         )}
@@ -94,7 +94,7 @@ export default function LoginPage() {
         </div>
 
         <Button type="submit" className="w-full mt-6 h-11 text-md">
-          {loginType === 'b2c' ? 'Sign In / Sign Up' : 'Continue to School Selection'}
+          {loginType === 'b2c' ? 'Sign In / Sign Up' : 'Continue to Educational Institute Selection'}
         </Button>
       </form>
     </div>

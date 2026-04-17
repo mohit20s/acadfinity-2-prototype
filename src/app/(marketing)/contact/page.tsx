@@ -12,7 +12,7 @@ export default function ContactPage() {
             <div>
               <h1 className="text-4xl font-extrabold text-slate-900 mb-6">Get in Touch</h1>
               <p className="text-slate-600 mb-8">
-                Ready to transform your institution? Contact our team for a personalized demo or to learn more about our school-first ecosystem.
+                Ready to transform your institution? Contact our team for a personalized demo or to learn more about our Educational Institute-first ecosystem.
               </p>
               
               <div className="space-y-6">
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Email</label>
-                  <input type="email" className="w-full h-10 px-3 rounded-md border text-sm" placeholder="john@school.edu" />
+                  <input type="email" className="w-full h-10 px-3 rounded-md border text-sm" placeholder="john@Educational Institute.edu" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Institute Name</label>

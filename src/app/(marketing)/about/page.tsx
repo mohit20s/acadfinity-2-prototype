@@ -9,7 +9,7 @@ export default function AboutPage() {
     },
     {
       icon: Users,
-      title: "School-First Approach",
+      title: "Educational Institute-First Approach",
       desc: "Every feature is built based on real feedback from educators and principals."
     },
     {
@@ -43,10 +43,10 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Acadfinity?</h2>
               <p className="text-slate-600 mb-4">
-                Acadfinity was born out of a simple observation: most school management software is outdated, disconnected, and difficult to use. 
+                Acadfinity was born out of a simple observation: most Educational Institute management software is outdated, disconnected, and difficult to use. 
               </p>
               <p className="text-slate-600">
-                We built Acadfinity 2.0 to be different. It's a next-gen ecosystem that brings together ERP, LMS, and procurement into one unified experience, allowing school leaders to focus on what matters most—student success.
+                We built Acadfinity 2.0 to be different. It's a next-gen ecosystem that brings together ERP, LMS, and procurement into one unified experience, allowing Educational Institute leaders to focus on what matters most—student success.
               </p>
             </div>
             <div className="bg-slate-100 h-64 md:h-80 rounded-2xl flex items-center justify-center text-slate-400">

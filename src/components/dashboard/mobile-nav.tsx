@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BookOpen, ShoppingBag, Database, PlayCircle, Library, ClipboardCheck } from "lucide-react";
+import { LayoutDashboard, BookOpen, ShoppingBag, Database, PlayCircle, Library, ClipboardCheck, FileText, } from "lucide-react";
 import { usePrototypeStore } from "@/store/use-prototype-store";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ export function MobileNav() {
   // We added Library back to this list!
   const navItems = [
     { name: "Home", href: "/dashboard", icon: LayoutDashboard, show: true },
-    
+     
     { name: "LMS", href: "/lms", icon: BookOpen, show: true },
     { name: "Shop", href: "/marketplace", icon: ShoppingBag, show: true },
     { name: "Diagnostics", href: "/library", icon: ClipboardCheck, show: true },

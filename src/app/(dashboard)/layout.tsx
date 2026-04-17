@@ -6,6 +6,7 @@ import { Header } from "@/components/dashboard/header";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import B2CDashboardLayout from "../(b2c-dashboard)/layout"; // Importing our new B2C layout
 import { GlobalShortsPlayer } from "@/components/dashboard/global-shorts-player";
+import { NotificationsDrawer } from "@/components/dashboard/notifications-drawer";
 export default function DashboardLayoutSelector({
   children,
 }: {
@@ -20,7 +21,7 @@ export default function DashboardLayoutSelector({
      <GlobalShortsPlayer />
   }
 
-  // Otherwise, render the standard B2B School Portal layout.
+  // Otherwise, render the standard B2B Educational Institute Portal layout.
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
       <div className="hidden md:flex"><Sidebar /></div>
@@ -32,6 +33,7 @@ export default function DashboardLayoutSelector({
         <MobileNav />
       </div>
       <GlobalShortsPlayer />
+      <NotificationsDrawer />
     </div>
   );
 }

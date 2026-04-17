@@ -6,7 +6,7 @@ export default function SolutionsPage() {
   const modules = [
     {
       icon: Database,
-      title: "ERP: School Operations",
+      title: "ERP: Educational Institute Operations",
       description: "Run your entire institution with clarity. Manage admissions, fees, staff, transportation, and communication from a single, powerful dashboard.",
       features: ["Admissions Management", "Fee Collection & Tracking", "Staff & Payroll", "Transport Logistics"],
       color: "blue"
@@ -21,7 +21,7 @@ export default function SolutionsPage() {
     {
       icon: ShoppingBag,
       title: "Marketplace Procurement",
-      description: "Simplify how your school buys essentials. Procure everything from stationery and lab equipment to furniture and digital assets from verified vendors.",
+      description: "Simplify how your Educational Institute buys essentials. Procure everything from stationery and lab equipment to furniture and digital assets from verified vendors.",
       features: ["Verified Vendor Network", "Bulk Ordering Discounts", "Budget & Approval Flows", "Order Tracking"],
       color: "green"
     },
@@ -50,7 +50,7 @@ export default function SolutionsPage() {
             An Integrated Platform for K-12 Institutions
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl">
-            Acadfinity is more than just software; it's a complete operating system designed to enhance every facet of your school's ecosystem.
+            Acadfinity is more than just software; it's a complete operating system designed to enhance every facet of your Educational Institute's ecosystem.
           </p>
         </div>
       </section>

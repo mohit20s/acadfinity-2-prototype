@@ -71,7 +71,7 @@ export function StudentDirectory() {
               </div>
             </div>
             
-            {(currentRole === 'Director' || currentRole === 'Principal' || currentRole === 'School Admin') && (
+            {(currentRole === 'Director' || currentRole === 'Principal' || currentRole === 'Educational Institute Admin') && (
               <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-l-4 border-l-amber-400">
                 <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Financial Status</h3>
                 <div className="flex items-center gap-3 mb-2"><CreditCard className="h-5 w-5 text-amber-500" /><p className="text-lg font-black text-slate-900">₹45,000 <span className="text-xs text-slate-500 font-medium">Due</span></p></div>
@@ -122,7 +122,7 @@ export function StudentDirectory() {
           <p className="text-sm text-slate-500">{currentRole === 'Teacher' ? 'Showing students in your assigned grades.' : 'Manage all student records across the institution.'}</p>
         </div>
         <div className="flex gap-2 w-full sm:w-auto">
-          {(currentRole === 'Director' || currentRole === 'Principal' || currentRole === 'School Admin') && (
+          {(currentRole === 'Director' || currentRole === 'Principal' || currentRole === 'Educational Institute Admin') && (
             <Button className="w-full sm:w-auto font-bold"><Plus className="h-4 w-4 mr-2" /> New Admission</Button>
           )}
           <Button variant="outline" className="w-full sm:w-auto font-bold"><FileDown className="h-4 w-4 mr-2" /> Export</Button>

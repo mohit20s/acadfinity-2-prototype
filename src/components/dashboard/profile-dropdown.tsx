@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, Settings, User, Activity } from "lucide-react";
+import { LogOut, Settings, User, Activity, Bell } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,7 @@ import { usePrototypeStore } from "@/store/use-prototype-store";
 import { useRouter } from "next/navigation";
 
 export function ProfileDropdown() {
-  const { currentRole } = usePrototypeStore();
+  const { currentRole, setNotificationsOpen } = usePrototypeStore();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -24,8 +24,10 @@ export function ProfileDropdown() {
     <DropdownMenu>
       {/* 1. The Trigger (The Avatar) */}
       <DropdownMenuTrigger asChild>
-        <button className="h-9 w-9 rounded-full bg-primary text-white flex items-center justify-center text-xs font-black shadow-md focus:outline-none ring-2 ring-white hover:scale-105 transition-transform shrink-0">
+        <button className="relative h-9 w-9 rounded-full bg-primary text-white flex items-center justify-center text-xs font-black shadow-md focus:outline-none ring-2 ring-white hover:scale-105 transition-transform shrink-0">
           {currentRole.charAt(0)}
+          {/* Mobile Red Dot Indicator on the Avatar */}
+          <span className="sm:hidden absolute -top-1 -right-1 h-3 w-3 rounded-full bg-rose-500 border-2 border-white animate-pulse"></span>
         </button>
       </DropdownMenuTrigger>
 
@@ -42,7 +44,16 @@ export function ProfileDropdown() {
         
         <DropdownMenuSeparator />
         
-        {/* NEW: Link to Analytics/Overview */}
+        {/* NEW: Mobile Notifications Access */}
+        <DropdownMenuItem 
+          onClick={() => setNotificationsOpen(true)} 
+          className="sm:hidden cursor-pointer font-bold text-slate-900 bg-slate-50 mb-1"
+        >
+          <Bell className="mr-2 h-4 w-4 text-rose-500" />
+          <span className="flex-1">Notifications</span>
+          <span className="bg-rose-500 text-white text-[9px] px-2 py-0.5 rounded-full">2 NEW</span>
+        </DropdownMenuItem>
+
         <DropdownMenuItem onClick={() => router.push('/analytics')} className="cursor-pointer font-medium">
           <Activity className="mr-2 h-4 w-4 text-slate-400" />
           <span>My Analytics Hub</span>

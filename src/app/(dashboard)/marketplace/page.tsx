@@ -17,7 +17,7 @@ const products = [
     id: 1, name: "Premium A4 Ruled Notebooks (Pack of 100)", category: "Stationery", 
     price: "₹4,500", oldPrice: "₹6,000", discount: "25% OFF", rating: 4.8, reviews: 124, 
     type: "sale", vendor: "EduSupplies India", stock: "In Stock",
-    desc: "High-quality 70 GSM paper notebooks perfect for school term distributions. Features a durable soft cover and index page.",
+    desc: "High-quality 70 GSM paper notebooks perfect for Educational Institute term distributions. Features a durable soft cover and index page.",
     specs: ["100 pages per book", "70 GSM Paper", "A4 Size", "Soft Cover"]
   },
   { 
@@ -31,7 +31,7 @@ const products = [
     id: 3, name: "Advanced Chemistry Lab Starter Kit", category: "Lab Equipment", 
     price: "₹22,000", oldPrice: "₹25,000", discount: "12% OFF", rating: 4.7, reviews: 89, 
     type: "sale", vendor: "SciEquip Makers", stock: "In Stock",
-    desc: "Complete starter kit for high school chemistry labs. Includes beakers, test tubes, safety goggles, and basic non-hazardous reagents.",
+    desc: "Complete starter kit for high Educational Institute chemistry labs. Includes beakers, test tubes, safety goggles, and basic non-hazardous reagents.",
     specs: ["Grade 9-12 suitable", "Borosilicate Glass", "ISO Certified", "Includes Safety Gear"]
   },
   { 
@@ -44,7 +44,7 @@ const products = [
   { 
     id: 5, name: "Ergonomic Student Desk & Chair Set", category: "Furniture", 
     price: "₹3,200", oldPrice: "₹4,000", discount: "20% OFF", rating: 4.5, reviews: 32, 
-    type: "sale", vendor: "SchoolFurn Works", stock: "Made to Order (14 Days)",
+    type: "sale", vendor: "Educational InstituteFurn Works", stock: "Made to Order (14 Days)",
     desc: "Adjustable height desk and chair set designed for posture support. Powder-coated steel frame with solid wood top.",
     specs: ["Height Adjustable", "Anti-scratch coating", "Ergonomic backrest", "Max load 100kg"]
   },
@@ -83,7 +83,7 @@ export default function MarketplacePage() {
           <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl"></div>
           <div className="relative z-10 w-full md:w-auto">
             <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Ecosystem Store</h1>
-            <p className="text-slate-400 font-medium">Procure bulk school supplies or borrow learning assets.</p>
+            <p className="text-slate-400 font-medium">Procure bulk Educational Institute supplies or borrow learning assets.</p>
           </div>
           <div className="relative z-10 w-full md:w-96 flex gap-2">
             <div className="relative flex-1">

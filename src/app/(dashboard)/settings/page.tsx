@@ -90,7 +90,7 @@ export default function SettingsPage() {
               <h2 className="text-xl font-bold text-slate-900 mb-2">Institute Profile</h2>
               <p className="text-sm text-slate-500 mb-6">This information is displayed across the platform.</p>
                <div className="space-y-4 max-w-lg">
-                <div><label className="text-sm font-medium">Institute Name</label><input type="text" defaultValue="Delhi Public School" className="w-full h-10 px-3 rounded-md border mt-1" /></div>
+                <div><label className="text-sm font-medium">Institute Name</label><input type="text" defaultValue="Delhi Public Educational Institute" className="w-full h-10 px-3 rounded-md border mt-1" /></div>
                 <div><label className="text-sm font-medium">Address</label><input type="text" defaultValue="Sector 62, Noida, India" className="w-full h-10 px-3 rounded-md border mt-1" /></div>
                 <div><label className="text-sm font-medium">Academic Year Start</label><input type="date" defaultValue="2024-04-01" className="w-full h-10 px-3 rounded-md border mt-1" /></div>
                 <div className="border-t pt-6 mt-4 flex justify-end">
@@ -130,7 +130,7 @@ export default function SettingsPage() {
                    <div className="h-6 w-11 bg-emerald-500 rounded-full p-1 flex items-center cursor-pointer"><div className="h-4 w-4 bg-white rounded-full shadow-sm ml-auto"></div></div>
                  </div>
                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                   <div><p className="font-medium">Daily Summary Email</p><p className="text-xs text-slate-500">Get a daily digest of school activity.</p></div>
+                   <div><p className="font-medium">Daily Summary Email</p><p className="text-xs text-slate-500">Get a daily digest of Educational Institute activity.</p></div>
                    <div className="h-6 w-11 bg-slate-200 rounded-full p-1 flex items-center cursor-pointer"><div className="h-4 w-4 bg-white rounded-full shadow-sm"></div></div>
                  </div>
               </div>

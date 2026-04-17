@@ -15,7 +15,7 @@ export default function DashboardPage() {
     switch (currentRole) {
       case "Director":
       case "Principal":
-      case "School Admin":
+      case "Educational Institute Admin":
         return <DirectorDashboard />;
       case "Teacher":
         return <TeacherDashboard />;
@@ -35,7 +35,7 @@ export default function DashboardPage() {
     if (isB2C || currentRole === 'Student') return { title: "Learner Hub", desc: "Track your progress and active courses." };
     if (currentRole === 'Teacher') return { title: "Educator Portal", desc: "Manage your classes, students, and grading." };
     if (currentRole === 'Parent') return { title: "Family Portal", desc: "Track your child's academic progress and resources." };
-    return { title: "Institute Overview", desc: "Monitor your school's performance and ecosystem usage." };
+    return { title: "Institute Overview", desc: "Monitor your Educational Institute's performance and ecosystem usage." };
   };
 
   const header = getHeaderText();

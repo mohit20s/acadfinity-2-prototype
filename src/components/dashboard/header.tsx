@@ -17,13 +17,13 @@ import Link from "next/link";
 export function Header() {
   const { currentRole, setRole } = usePrototypeStore();
 
-  const roles: Role[] = ["Director", "Principal", "School Admin", "Teacher", "Parent", "Student", "Independent Learner"];
+  const roles: Role[] = ["Director", "Principal", "Educational Institute Admin", "Teacher", "Parent", "Student", "Independent Learner"];
   const isB2C = currentRole === 'Independent Learner';
 
   return (
     <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-3 md:px-8 z-30 shrink-0 w-full overflow-hidden">
       
-      {/* LEFT SIDE: Logo + School Info */}
+      {/* LEFT SIDE: Logo + Educational Institute Info */}
       <div className="flex items-center shrink-0">
         <div className="scale-90 md:scale-100 origin-left shrink-0">
            <Logo />
@@ -32,7 +32,7 @@ export function Header() {
         {/* HIDDEN ON MOBILE: We hide this text on small screens to save space! */}
         <div className="hidden sm:flex flex-col justify-center border-l border-slate-200 pl-3 ml-3">
           <h2 className="text-sm font-bold text-slate-900 leading-tight line-clamp-1">
-            {isB2C ? "Personal Account" : "Delhi Public School"}
+            {isB2C ? "Personal Account" : "Delhi Public Educational Institute"}
           </h2>
           <p className="text-xs text-slate-500 font-medium whitespace-nowrap">
             {isB2C ? "Learner Hub" : "2024-25"}
@@ -57,7 +57,7 @@ export function Header() {
           </select>
         </div>
 
-        {/* APPS DROPDOWN (ONLY FOR B2B SCHOOL USERS) */}
+        {/* APPS DROPDOWN (ONLY FOR B2B Educational Institute USERS) */}
         {!isB2C && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -66,7 +66,7 @@ export function Header() {
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 mt-2 rounded-xl p-2 z-50 bg-white shadow-xl border-slate-100">
-              <DropdownMenuLabel className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">School Operations</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">Educational Institute Operations</DropdownMenuLabel>
               <DropdownMenuSeparator className="my-2" />
               
               <DropdownMenuItem asChild className="cursor-pointer font-bold rounded-lg py-3 hover:bg-slate-50 transition-colors">
@@ -92,9 +92,13 @@ export function Header() {
         )}
 
         {/* NOTIFICATION BELL (Hidden on mobile to save space) */}
-        <button className="relative p-1.5 text-slate-400 hover:text-slate-600 transition-colors hidden sm:block shrink-0">
+        {/* NOTIFICATION BELL */}
+        <button 
+          onClick={() => usePrototypeStore.getState().setNotificationsOpen(true)} // <-- ADD THIS ONCLICK
+          className="relative p-1.5 text-slate-400 hover:text-slate-600 transition-colors hidden sm:block shrink-0"
+        >
           <Bell className="h-5 w-5" />
-          <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 border-2 border-white"></span>
+          <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 border-2 border-white animate-pulse"></span>
         </button>
 
         {/* PROFILE DROPDOWN */}

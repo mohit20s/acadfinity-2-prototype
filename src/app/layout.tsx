@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] }); // Removed variable: "--font-sans" 
 
 export const metadata: Metadata = {
   title: "Acadfinity 2.0 | Prototype",
-  description: "Next-gen school ecosystem",
+  description: "Next-gen Educational Institute ecosystem",
 };
 
 export default function RootLayout({

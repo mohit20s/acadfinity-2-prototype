@@ -79,7 +79,7 @@ export function DirectorDashboard() {
           <div className="p-6 border-b border-slate-100 flex justify-between items-center">
             <div>
               <h3 className="font-semibold text-slate-900">Recent Marketplace Orders</h3>
-              <p className="text-sm text-slate-500">Latest school procurements.</p>
+              <p className="text-sm text-slate-500">Latest Educational Institute procurements.</p>
             </div>
             <button className="text-sm text-primary font-medium hover:underline">View All</button>
           </div>

@@ -44,7 +44,7 @@ export default function ERPPage() {
       
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900">ERP - School Operations</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900">ERP - Educational Institute Operations</h1>
           <p className="text-sm text-slate-500">Your central hub for managing all administrative tasks.</p>
         </div>
       </div>
