@@ -14,6 +14,8 @@ interface PrototypeState {
    // NEW: Notifications State
   isNotificationsOpen: boolean;
   setNotificationsOpen: (open: boolean) => void;
+   isLessonPlayerOpen: boolean;
+  setLessonPlayerOpen: (open: boolean) => void;
 }
 
 export const usePrototypeStore = create<PrototypeState>((set) => ({
@@ -26,4 +28,6 @@ export const usePrototypeStore = create<PrototypeState>((set) => ({
   setShortsOpen: (open) => set({ isShortsOpen: open }),
    isNotificationsOpen: false,
   setNotificationsOpen: (open) => set({ isNotificationsOpen: open }),
+   isLessonPlayerOpen: false,
+  setLessonPlayerOpen: (open) => set({ isLessonPlayerOpen: open }),
 }));
