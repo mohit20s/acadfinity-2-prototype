@@ -9,6 +9,7 @@ import { NotificationsDrawer } from "@/components/dashboard/notifications-drawer
 import { GlobalShortsPlayer } from "@/components/dashboard/global-shorts-player";
 import { usePathname } from 'next/navigation';
 import { useEffect } from "react";
+import { MyntraStyleBottomNav } from "@/components/dashboard/myntra-style-bottom-nav";
 
 export default function DashboardLayoutSelector({
   children,
@@ -56,11 +57,12 @@ export default function DashboardLayoutSelector({
           <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-24 md:pb-8">
             {children}
           </main>
-          <MobileNav />
+         <MyntraStyleBottomNav />
         </div>
       </div>
       <NotificationsDrawer />
       <GlobalShortsPlayer />
+      
     </>
   );
 }

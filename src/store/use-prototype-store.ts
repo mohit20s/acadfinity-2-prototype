@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 // Expanded roles to include specific admins and B2C users
 export type Role = 'Director' | 'Principal' | 'Educational Institute Admin' | 'Teacher' | 'Parent' | 'Student' | 'Independent Learner';
-
+export type NavContext = 'main' | 'explore';
 interface PrototypeState {
   currentRole: Role;
   setRole: (role: Role) => void;
@@ -16,6 +16,8 @@ interface PrototypeState {
   setNotificationsOpen: (open: boolean) => void;
    isLessonPlayerOpen: boolean;
   setLessonPlayerOpen: (open: boolean) => void;
+    navContext: NavContext;
+  setNavContext: (context: NavContext) => void;
 }
 
 export const usePrototypeStore = create<PrototypeState>((set) => ({
@@ -30,4 +32,6 @@ export const usePrototypeStore = create<PrototypeState>((set) => ({
   setNotificationsOpen: (open) => set({ isNotificationsOpen: open }),
    isLessonPlayerOpen: false,
   setLessonPlayerOpen: (open) => set({ isLessonPlayerOpen: open }),
+    navContext: 'main',
+  setNavContext: (context) => set({ navContext: context }),
 }));

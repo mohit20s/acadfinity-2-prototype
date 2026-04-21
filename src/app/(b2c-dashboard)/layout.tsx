@@ -7,7 +7,7 @@ import { usePrototypeStore } from "@/store/use-prototype-store";
 import { cn } from "@/lib/utils";
 import { ProfileDropdown } from "@/components/dashboard/profile-dropdown";
 import { GlobalShortsPlayer } from "@/components/dashboard/global-shorts-player";
-
+import { MyntraStyleBottomNav } from "@/components/dashboard/myntra-style-bottom-nav";
 // 1. MOBILE BOTTOM NAV (Updated to include Diagnostics)
 function B2CBottomNav() {
   const pathname = usePathname();
@@ -96,12 +96,15 @@ function B2CHeader() {
           <span className="absolute top-1 right-1 h-4 w-4 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
         </button>
          <button 
-          onClick={() => setShortsOpen(false) || usePrototypeStore.getState().setNotificationsOpen(true)}
-          className="relative p-2 text-slate-500 hover:text-primary transition-colors"
-        >
-          <Bell className="h-6 w-6" />
-          <span className="absolute top-1 right-1 h-3 w-3 bg-rose-500 border-2 border-white rounded-full animate-pulse"></span>
-        </button>
+  onClick={() => {
+    usePrototypeStore.getState().setShortsOpen(false);
+    usePrototypeStore.getState().setNotificationsOpen(true);
+  }}
+  className="relative p-2 text-slate-500 hover:text-primary transition-colors"
+>
+  <Bell className="h-6 w-6" />
+  <span className="absolute top-1 right-1 h-3 w-3 bg-rose-500 border-2 border-white rounded-full animate-pulse"></span>
+</button>
 
         <ProfileDropdown />
       </div>
@@ -123,12 +126,13 @@ export default function B2CDashboardLayout({
           <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-24 md:pb-8 w-full">
             {children}
           </main>
-          <B2CBottomNav />
+          <MyntraStyleBottomNav />
         </div>
       </div>
       
       {/* Global overlay for shorts (Needs to be outside the main flex container) */}
       <GlobalShortsPlayer />
+      
     </>
   );
 }
