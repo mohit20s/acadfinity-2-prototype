@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { 
   ArrowLeft, BookOpen, Clock, FileText, CheckCircle2, 
   Video, HelpCircle, ChevronRight, Award, Users, Target, 
-  ClipboardList, Trophy, Lock, Download, Calendar, PlayCircle,
+  ClipboardList, Trophy, Lock, Download, Calendar, PenTool, X, Bookmark, PlayCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
@@ -12,9 +12,9 @@ import { usePrototypeStore } from '@/store/use-prototype-store';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
-// --- EXPANDED MOCK DATA ---
+// --- MOCK DATA ---
 const courseAssignments = [
-  { id: 'a1', title: "Mid-Term Algebra Worksheet", due: "Oct 25", status: "pending", type: "Homework" },
+  { id: 'a1', title: "Variables Worksheet", due: "Oct 25", status: "pending", type: "Homework" },
   { id: 'a2', title: "Linear Equations Lab", due: "Oct 20", status: "graded", type: "Practical", score: "A+"},
 ];
 
@@ -24,16 +24,16 @@ const courseAssessments = [
   { id: 'q3', title: "Final Certification Exam", type: "Program-Based", scope: "Entire Course", duration: "120 Mins", questions: 100, status: "locked", color: "amber" },
 ];
 
-// NEW: Structured Syllabus Data
+// --- INTERCONNECTED SYLLABUS DATA ---
 const syllabusModules = [
   {
     id: 'm1',
     title: "Module 1: Algebra Basics",
     status: "completed",
     lessons: [
-      { id: '123', title: "1.1 - Introduction to Variables", type: "Video", duration: "12 Mins", status: "completed", icon: Video },
-      { id: '124', title: "1.2 - Solving Linear Equations", type: "Reading", duration: "15 Mins", status: "completed", icon: FileText },
-      { id: '125', title: "1.3 - Core Concept Quiz", type: "Quiz", duration: "10 Qs", status: "completed", icon: HelpCircle },
+      { id: '101', title: "1.1 - Pre-Read: Core Concepts", type: "Reading", duration: "5 Mins", status: "completed", icon: FileText },
+      { id: '102', title: "1.2 - Introduction to Variables", type: "Video", duration: "12 Mins", status: "completed", icon: Video },
+      { id: '103', title: "1.3 - Variables Worksheet", type: "Assignment", duration: "Required", status: "completed", icon: PenTool, refId: 'a1' },
     ]
   },
   {
@@ -43,7 +43,7 @@ const syllabusModules = [
     lessons: [
       { id: '201', title: "2.1 - Two-Step Equations", type: "Video", duration: "18 Mins", status: "completed", icon: Video },
       { id: '202', title: "2.2 - Variables on Both Sides", type: "Video", duration: "22 Mins", status: "active", icon: Video },
-      { id: '203', title: "2.3 - Practical Worksheet", type: "Assignment", duration: "Required", status: "locked", icon: Download },
+      { id: '203', title: "2.3 - Practical Lab", type: "Assignment", duration: "Required", status: "locked", icon: PenTool, refId: 'a2' },
       { id: '204', title: "2.4 - Module 2 Assessment", type: "Quiz", duration: "15 Qs", status: "locked", icon: HelpCircle },
     ]
   },
@@ -54,24 +54,40 @@ const syllabusModules = [
     lessons: [
       { id: '301', title: "3.1 - Intro to Geometry", type: "Live Class", duration: "Upcoming", status: "locked", icon: Calendar },
       { id: '302', title: "3.2 - Calculating Area", type: "Reading", duration: "20 Mins", status: "locked", icon: FileText },
-      { id: '303', title: "3.3 - The Pythagorean Theorem", type: "Video", duration: "25 Mins", status: "locked", icon: Video },
     ]
   }
 ];
 
 export default function CourseDetailsPage({ params }: { params: { courseId: string } }) {
   const [activeTab, setActiveTab] = useState('syllabus');
+  const [readingMaterial, setReadingMaterial] = useState<string | null>(null);
   const router = useRouter();
 
+  // --- INTERCONNECTED CLICK ROUTING ---
+  const handleSyllabusClick = (lesson: any) => {
+    if (lesson.status === 'locked') return;
+
+    if (lesson.type === 'Video') {
+      router.push(`/lms/lessons/${lesson.id}`);
+    } else if (lesson.type === 'Reading') {
+      setReadingMaterial(lesson.id);
+    } else if (lesson.type === 'Assignment') {
+      // Route to the Global Assignments Hub, automatically opening this specific assignment!
+      router.push(`/lms/assignments?assignmentId=${lesson.refId}`);
+    } else if (lesson.type === 'Quiz') {
+      setActiveTab('assessments'); // Switch tab to assessments
+    }
+  };
+
   return (
-    <div className="space-y-6 animate-in fade-in duration-300 pb-24">
+    <div className="space-y-6 animate-in fade-in duration-300 pb-24 relative">
       
       <Link href="/lms" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 -ml-2">
         <ArrowLeft className="h-4 w-4" /> Back to Course Catalog
       </Link>
 
       {/* Course Hero */}
-      <div className="bg-slate-900 text-white rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start gap-6 relative overflow-hidden">
+      <div className="bg-slate-900 text-white rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row justify-between items-start gap-6 relative overflow-hidden shadow-2xl">
         <div className="absolute right-0 top-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
         <div className="relative z-10">
           <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-3">Academic Course</p>
@@ -80,13 +96,13 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
             <span>By Anjali Sharma</span><span>•</span><span>32 Learners</span>
           </div>
         </div>
-        <Button onClick={() => router.push(`/lms/lessons/123`)} className="relative z-10 rounded-full font-black px-8 h-12 shadow-xl shadow-primary/20">
+        <Button onClick={() => router.push(`/lms/lessons/202`)} className="relative z-10 rounded-full font-black px-8 h-12 shadow-xl shadow-primary/20">
           Resume Module 2
         </Button>
       </div>
       
       {/* Tabs */}
-      <div className="flex border-b border-slate-200 px-2 scrollbar-hide overflow-x-auto sticky top-0 bg-slate-50/80 backdrop-blur-md z-20 -mx-4 sm:mx-0 px-4 sm:px-0">
+      <div className="flex border-b border-slate-200 px-2 scrollbar-hide overflow-x-auto sticky top-0 bg-slate-50/90 backdrop-blur-md z-20 -mx-4 sm:mx-0 px-4 sm:px-0">
         {['syllabus', 'assignments', 'assessments', 'resources'].map(tab => (
           <button key={tab} onClick={() => setActiveTab(tab)} 
             className={cn("px-5 md:px-6 py-4 text-xs font-black uppercase tracking-widest border-b-4 transition-all whitespace-nowrap", 
@@ -96,13 +112,12 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
         ))}
       </div>
 
-      {/* 1. EXPANDED SYLLABUS */}
+      {/* 1. SYLLABUS (INTERCONNECTED) */}
       {activeTab === 'syllabus' && (
         <div className="space-y-6 animate-in fade-in duration-300">
-           {syllabusModules.map((module, index) => (
+           {syllabusModules.map((module) => (
              <div key={module.id} className={cn("bg-white rounded-3xl border shadow-sm overflow-hidden", module.status === 'locked' ? "border-slate-100 opacity-70 grayscale" : "border-slate-200")}>
                
-               {/* Module Header */}
                <div className="p-6 bg-slate-50/50 border-b flex justify-between items-center">
                  <div>
                    <h3 className="font-black text-slate-900 text-lg">{module.title}</h3>
@@ -113,43 +128,38 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
                  {module.status === 'locked' && <div className="flex items-center gap-1 text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200"><Lock className="h-4 w-4" /> Locked</div>}
                </div>
 
-               {/* Lessons List */}
                <div className="p-6 space-y-3">
-                 {module.lessons.map((lesson) => {
-                   const isClickable = lesson.status !== 'locked';
-                   const Comp = isClickable ? Link : 'div';
-                   
-                   return (
-                     <Comp 
-                       href={isClickable ? `/lms/lessons/${lesson.id}` : '#'} 
-                       key={lesson.id} 
-                       className={cn("flex items-center justify-between p-4 rounded-2xl border transition-all group",
-                         lesson.status === 'completed' ? "bg-slate-50 border-slate-100" :
-                         lesson.status === 'active' ? "bg-white border-primary/40 shadow-md ring-4 ring-primary/5 cursor-pointer hover:border-primary" :
-                         "bg-white border-slate-100 opacity-60"
-                       )}
-                     >
-                       <div className="flex items-center gap-4">
-                         <div className={cn("h-10 w-10 rounded-xl border flex items-center justify-center shrink-0 transition-transform", 
-                            lesson.status === 'completed' ? "bg-white border-slate-200 text-slate-400" :
-                            lesson.status === 'active' ? "bg-primary/10 border-primary/20 text-primary group-hover:scale-110" :
-                            "bg-slate-50 border-slate-100 text-slate-300"
-                         )}>
-                           <lesson.icon className="h-5 w-5" />
-                         </div>
-                         <div>
-                           <p className={cn("text-sm font-bold", lesson.status === 'active' ? "text-slate-900" : "text-slate-700")}>{lesson.title}</p>
-                           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{lesson.type} • {lesson.duration}</p>
-                         </div>
+                 {module.lessons.map((lesson) => (
+                   <div 
+                     key={lesson.id} 
+                     onClick={() => handleSyllabusClick(lesson)}
+                     className={cn("flex items-center justify-between p-4 rounded-2xl border transition-all group",
+                       lesson.status === 'completed' ? "bg-slate-50 border-slate-100 hover:border-slate-300 cursor-pointer" :
+                       lesson.status === 'active' ? "bg-white border-primary/40 shadow-md ring-4 ring-primary/5 cursor-pointer hover:border-primary" :
+                       "bg-white border-slate-100 opacity-60 cursor-not-allowed"
+                     )}
+                   >
+                     <div className="flex items-center gap-4">
+                       <div className={cn("h-10 w-10 rounded-xl border flex items-center justify-center shrink-0 transition-transform", 
+                          lesson.type === 'Assignment' ? "bg-purple-50 border-purple-200 text-purple-500" :
+                          lesson.type === 'Reading' ? "bg-amber-50 border-amber-200 text-amber-500" :
+                          lesson.status === 'completed' ? "bg-white border-slate-200 text-slate-400" :
+                          lesson.status === 'active' ? "bg-primary/10 border-primary/20 text-primary group-hover:scale-110" :
+                          "bg-slate-50 border-slate-100 text-slate-300"
+                       )}>
+                         <lesson.icon className="h-5 w-5" />
                        </div>
-                       
-                       {/* Status Indicators */}
-                       {lesson.status === 'completed' && <CheckCircle2 className="h-5 w-5 text-emerald-500" />}
-                       {lesson.status === 'active' && <Button size="sm" className="h-8 rounded-full font-black text-xs px-4">Start</Button>}
-                       {lesson.status === 'locked' && <Lock className="h-4 w-4 text-slate-300" />}
-                     </Comp>
-                   );
-                 })}
+                       <div>
+                         <p className={cn("text-sm font-bold", lesson.status === 'active' ? "text-slate-900" : "text-slate-700")}>{lesson.title}</p>
+                         <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{lesson.type} • {lesson.duration}</p>
+                       </div>
+                     </div>
+                     
+                     {lesson.status === 'completed' && <CheckCircle2 className="h-5 w-5 text-emerald-500" />}
+                     {lesson.status === 'active' && <Button size="sm" className="h-8 rounded-full font-black text-xs px-4">Start</Button>}
+                     {lesson.status === 'locked' && <Lock className="h-4 w-4 text-slate-300" />}
+                   </div>
+                 ))}
                </div>
              </div>
            ))}
@@ -211,6 +221,45 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
       {activeTab === 'resources' && (
         <div className="bg-white p-12 rounded-3xl border-2 border-dashed border-slate-100 text-center text-slate-400 font-bold uppercase text-xs tracking-widest animate-in fade-in">
           No downloadable resources for this course yet.
+        </div>
+      )}
+
+      {/* =========================================
+          READING MODE OVERLAY (Pops up when clicking a "Reading" in Syllabus)
+          ========================================= */}
+      {readingMaterial && (
+        <div className="fixed inset-0 z-[100] bg-white text-slate-900 flex flex-col animate-in slide-in-from-bottom duration-300">
+          <div className="h-14 border-b border-slate-100 flex items-center justify-between px-4 shrink-0 bg-white shadow-sm pt-safe-area-inset-top">
+            <button onClick={() => setReadingMaterial(null)} className="flex items-center gap-2 text-slate-900 font-bold hover:text-primary">
+              <X className="h-5 w-5" /> Close Reading
+            </button>
+            <div className="flex gap-2">
+              <button className="p-2 text-slate-400 hover:text-primary"><Bookmark className="h-5 w-5" /></button>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-6 md:p-12 pb-24 max-w-3xl mx-auto w-full">
+             <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Pre-Read Material</span>
+             <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight my-4">Chapter 1: Core Concepts</h1>
+             
+             <article className="prose prose-slate prose-lg max-w-none mt-8">
+               <p className="text-slate-600 font-medium">
+                 Before diving into the video lessons, it's crucial to understand the fundamental building blocks of Algebra. 
+                 A variable is a symbol, usually a letter, that represents an unknown number.
+               </p>
+               <h3 className="font-black text-slate-900">Key Rules:</h3>
+               <ul className="font-medium text-slate-600">
+                 <li><strong>Balance:</strong> Whatever you do to one side of the equation, you must do to the other.</li>
+                 <li><strong>Isolation:</strong> The goal is always to get the variable by itself on one side of the equals sign.</li>
+               </ul>
+             </article>
+
+             <div className="mt-12 pt-8 border-t border-slate-100 flex justify-center">
+               <Button onClick={() => setReadingMaterial(null)} className="h-14 px-10 rounded-full font-black shadow-xl text-lg">
+                 Mark as Read & Continue
+               </Button>
+             </div>
+          </div>
         </div>
       )}
 
