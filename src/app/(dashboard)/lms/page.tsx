@@ -165,17 +165,30 @@ export default function LmsCatalogPage() {
         {/* 2. MAIN LAYOUT: Using Order to swap on Mobile */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           
-          {/* CHECKOUT CARD: 
+         {/* CHECKOUT CARD: 
               - order-1 on Mobile (Immediately after title)
               - order-2 on Desktop (Sidebar)
           */}
           <div className="w-full lg:w-[360px] shrink-0 order-1 lg:order-2">
             <div className="lg:sticky top-24 space-y-4 bg-white rounded-[2rem] border-2 border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
-              <div className={cn("aspect-video flex items-center justify-center relative group", selectedCourse.type === 'academic' ? 'bg-slate-800' : 'bg-rose-600')}>
-                <PlayCircle className="h-16 w-16 text-white/70 group-hover:scale-110 group-hover:text-white transition-all cursor-pointer drop-shadow-lg" />
-                <p className="absolute bottom-3 text-white text-[10px] font-black uppercase tracking-widest drop-shadow-md">Preview Course</p>
-              </div>
               
+              {/* --- NEW: LOCAL VIDEO PLAYER --- */}
+              <div className="aspect-video bg-slate-900 flex items-center justify-center relative group overflow-hidden">
+                <video 
+                  src="/sample-video.mp4" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Overlay Play Button */}
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer">
+                  <PlayCircle className="h-16 w-16 text-white/80 group-hover:scale-110 group-hover:text-white transition-all drop-shadow-lg" />
+                </div>
+                <p className="absolute bottom-3 text-white text-[10px] font-black uppercase tracking-widest drop-shadow-md w-full text-center z-10">Preview Course</p>
+              </div>
+              {/* --- END VIDEO PLAYER --- */}
               <div className="p-6 md:p-8 pt-4 space-y-6">
                 <div>
                   <div className="flex items-end gap-3 mb-1">
