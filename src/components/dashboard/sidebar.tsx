@@ -16,10 +16,10 @@ export function Sidebar() {
   // Dynamic navigation array. ERP is hidden if the user is B2C.
   const navItems = [
     { name: "Home", href: "/dashboard", icon: Home, show: true },
-   
     { name: "Skill Academy (LMS)", href: "/lms", icon: BookOpen, show: true },
     { name: "Marketplace", href: "/marketplace", icon: ShoppingBag, show: true },
     { name: "Diagnostics", href: "/library", icon: ClipboardCheck, show: true },
+    
   ].filter(item => item.show);
 
   return (
