@@ -263,5 +263,6 @@ export default function LmsCatalogPage() {
       </div>
     );
   }   
+  
   return null;
 }
