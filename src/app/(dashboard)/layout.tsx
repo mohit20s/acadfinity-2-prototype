@@ -48,21 +48,29 @@ export default function DashboardLayoutSelector({
   }
 
   // Otherwise, render the standard B2B School Portal layout.
-  return (
+ return (
     <>
-      <div className="flex h-screen overflow-hidden bg-slate-50">
-        <div className="hidden md:flex"><Sidebar /></div>
-        <div className="flex flex-col flex-1 overflow-hidden relative">
+      <div className="flex h-screen w-full overflow-hidden bg-slate-50">
+        
+        {/* Sidebar: Only visible on desktop, or when triggered on mobile */}
+        <Sidebar />
+
+        <div className="flex flex-col flex-1 min-w-0 overflow-hidden relative">
           <Header />
-          <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-24 md:pb-8">
-            {children}
+          
+          {/* Content Area */}
+          <main className="flex-1 overflow-y-auto p-4 md:p-10 pb-24 md:pb-10">
+            <div className="max-w-[1600px] mx-auto"> {/* Added a max-width for giant screens */}
+              {children}
+            </div>
           </main>
-         <MyntraStyleBottomNav />
+          
+          {/* Mobile Navigation */}
+          <MyntraStyleBottomNav />
         </div>
       </div>
       <NotificationsDrawer />
       <GlobalShortsPlayer />
-      
     </>
   );
 }
