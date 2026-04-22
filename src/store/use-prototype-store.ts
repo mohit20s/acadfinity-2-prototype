@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 // Expanded roles to include specific admins and B2C users
 export type Role = 'Director' | 'Principal' | 'Educational Institute Admin' | 'Teacher' | 'Parent' | 'Student' | 'Independent Learner';
-export type NavContext = 'main' | 'explore';
+export type NavContext = 'main' | 'explore' | 'learn';
 interface PrototypeState {
   currentRole: Role;
   setRole: (role: Role) => void;
