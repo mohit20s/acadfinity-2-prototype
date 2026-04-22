@@ -2,9 +2,9 @@
 
 import LmsCatalogPage from "@/components/dashboard/lms-catalog";
 
-export default function LMSPage() {
+export default function LMSHubPage() {
   return (
-    <div className="animate-in fade-in duration-500">
+    <div className="space-y-6">
       <LmsCatalogPage />
     </div>
   );
