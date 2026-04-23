@@ -148,7 +148,7 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
       </div>
       
       <div className="flex border-b border-slate-200 px-2 scrollbar-hide overflow-x-auto sticky top-0 bg-slate-50/90 backdrop-blur-md z-20 -mx-4 sm:mx-0 px-4 sm:px-0">
-        {['content','live classes', 'assignments',   'resources'].map(tab => (
+        {['syllabus','live classes', 'assignments', 'assessments',  'resources'].map(tab => (
           <button key={tab} onClick={() => setActiveTab(tab)} 
             className={cn("px-5 md:px-6 py-4 text-xs font-black uppercase tracking-widest border-b-4 transition-all whitespace-nowrap", 
             activeTab === tab ? "border-primary text-primary" : "border-transparent text-slate-400 hover:text-slate-600")}>
@@ -160,7 +160,7 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
       </div>
 
       {/* 1. SYLLABUS (4-LEVEL DEEP) */}
-      {activeTab === 'content' && (
+      {activeTab === 'syllabus' && (
         <div className="space-y-8 animate-in fade-in duration-300">
            {syllabusHierarchy.map((module) => (
              
