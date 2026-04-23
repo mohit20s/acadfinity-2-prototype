@@ -28,38 +28,88 @@ export default function LmsCatalogPage() {
   const availableCourses = courses.filter(c => c.progress === 0);
   const isAdmin = currentRole === "Director" || currentRole === "Educational Institute Admin" || currentRole === "Principal";
 
-  // ==========================================
+ 
+ // ==========================================
   // VIEW 1: DETAILED COURSE PURCHASE PAGE (PDP)
   // ==========================================
   if (view === 'purchase' && selectedCourse) {
     return (
-      <div className="animate-in slide-in-from-right duration-500 pb-24 px-1">
+      <div className="animate-in slide-in-from-right duration-500 pb-24 px-1 w-full">
         
         <Button variant="ghost" onClick={() => setView('catalog')} className="mb-4 font-bold text-slate-500 hover:text-slate-900 -ml-2">
           <ArrowLeft className="h-4 w-4 mr-2" /> Back to Catalog
         </Button>
 
-        {/* 1. TITLE SECTION (Always on top) */}
-        <section className="mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-100 text-rose-600 text-[10px] font-black mb-4 uppercase tracking-widest">
-             {selectedCourse.type}
-          </div>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 mb-4 leading-tight">
-            {selectedCourse.title}
-          </h1>
-          <p className="text-base md:text-lg text-slate-600 font-medium max-w-3xl">
-            Build a complete, system-driven financial framework to manage, control, and grow your institution’s finances with clarity and confidence.
-          </p>
-        </section>
-
-        {/* 2. MAIN LAYOUT: Order Swaps on Mobile */}
+        {/* MAIN LAYOUT: Side-by-Side on Desktop, Stacked on Mobile */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           
-          {/* CHECKOUT CARD: order-1 on Mobile, order-2 on Desktop */}
-          <div className="w-full lg:w-[360px] shrink-0 order-1 lg:order-2">
+          {/* LEFT SIDE (Desktop): Contains Title AND Content */}
+          <div className="flex-1 space-y-12 order-2 lg:order-1 flex flex-col">
+            
+            {/* 1. TITLE SECTION (Moved inside the left column) */}
+            <section className="mb-2 space-y-3 md:mb-0">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-100 text-rose-600 text-[10px] font-black mb-4 uppercase tracking-widest">
+                 {selectedCourse.type}
+              </div>
+              <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 mb-4 leading-tight">
+                {selectedCourse.title}
+              </h1>
+              <p className="text-base md:text-lg text-slate-600 font-medium max-w-3xl mb-6">
+                Build a complete, system-driven financial framework to manage, control, and grow your institution’s finances with clarity and confidence.
+              </p>
+              <div className="flex items-center gap-6 text-sm font-bold text-slate-700">
+                <div className="flex items-center gap-1.5"><Star className="h-4 w-4 text-amber-400 fill-amber-400" /> 4.8 <span className="text-slate-400 font-medium">(2,140 ratings)</span></div>
+                <div className="flex items-center gap-1.5"><Users className="h-4 w-4 text-slate-400" /> {selectedCourse.students} enrolled</div>
+              </div>
+            </section>
+
+            {/* What you'll learn */}
+            <section className="p-6 md:p-8  border-2 border-slate-100 rounded-3xl bg-white shadow-sm">
+              <h2 className="text-xl font-black mb-6">What you'll learn</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Build a structured financial system for your school from planning to execution.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Set up and manage accounting, cash flow, and financial workflows with clarity.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Implement budgeting, cost control, and data-driven financial decision-making.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Ensure compliance, tax readiness, and audit preparedness with a system approach.</p></div>
+              </div>
+            </section>
+             
+            <section className="px-1">
+              <h2 className="text-xl font-black mb-4">Description</h2>
+              <div className="prose prose-slate max-w-none space-y-4 text-slate-600 font-medium leading-relaxed">
+                <p>This course is designed for school leaders who want to move beyond unstructured financial practices and build a clear, controlled, and growth-ready financial system for their institution. From financial planning and accounting setup to budgeting, cash flow management, and compliance, this program walks you through every critical aspect step by step.</p>
+                <p>Instead of theory, you will work with practical frameworks, real-world scenarios, and ready-to-use templates to implement systems directly in your school. You will gain complete visibility over your finances, improve decision-making, reduce financial risks, and create a structured foundation for sustainable growth.</p>
+                <p>By the end of this course, you will not just understand finance but will have a fully functional financial system in place, giving you clarity, control, and confidence to run your institution more efficiently and professionally.</p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-black mb-6 px-1">Course Content</h2>
+              <div className="space-y-3">
+                <div className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center justify-between hover:border-slate-200 transition-colors shadow-sm"><div className="flex items-center gap-4"><BookOpen className="h-5 w-5 text-slate-400" /><p className="font-bold text-slate-900">Module 1: Introduction & Setup</p></div><span className="hidden sm:block text-xs font-black text-slate-400 tracking-widest uppercase">4 lessons • 45m</span></div>
+                <div className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center justify-between hover:border-slate-200 transition-colors shadow-sm"><div className="flex items-center gap-4"><BookOpen className="h-5 w-5 text-slate-400" /><p className="font-bold text-slate-900">Module 2: Core Fundamentals</p></div><span className="hidden sm:block text-xs font-black text-slate-400 tracking-widest uppercase">8 lessons • 2h 15m</span></div>
+              </div>
+            </section>
+            
+            <section>
+              <h2 className="text-xl font-black mb-6 px-1">Your Instructor</h2>
+              <div className="flex items-center gap-5 p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                <div className="h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-indigo-100 flex items-center justify-center font-black text-indigo-600 shadow-inner text-xl shrink-0">
+                  {selectedCourse.instructor.split(' ').map((n: string) => n[0]).join('')}
+                </div>
+                <div>
+                  <h3 className="font-black text-lg md:text-xl text-slate-900">{selectedCourse.instructor}</h3>
+                  <p className="text-sm text-slate-500 font-semibold">Senior Educator & Industry Expert</p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          {/* RIGHT SIDE (Desktop) / TOP (Mobile): CHECKOUT CARD */}
+          {/* Using order-1 on mobile so the card sits above the title, but order-2 on desktop so it sits on the right */}
+          <div className="w-full lg:w-[360px] shrink-0 order-1 lg:order-2 px-1 sm:px-0">
             <div className="lg:sticky top-24 space-y-4 bg-white rounded-[2rem] border-2 border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
               
-              {/* --- LOCAL VIDEO PLAYER PREVIEW --- */}
               <div className="aspect-video bg-slate-900 flex items-center justify-center relative group overflow-hidden">
                 <video 
                   src="/sample-video.mp4" 
@@ -73,6 +123,11 @@ export default function LmsCatalogPage() {
               </div>
 
               <div className="p-6 md:p-8 pt-4 space-y-6">
+                {/* On mobile, we replicate the title briefly inside the card so they know what they are buying before scrolling down to the main title */}
+                <div className="lg:hidden block mb-4 border-b border-slate-100 pb-4">
+                  <h2 className="text-xl font-black text-slate-900 leading-tight">{selectedCourse.title}</h2>
+                </div>
+
                 <div>
                   <div className="flex items-end gap-3 mb-1">
                     <span className="text-4xl font-black tracking-tighter text-slate-900">{selectedCourse.price}</span>
@@ -95,64 +150,6 @@ export default function LmsCatalogPage() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* COURSE DETAILS CONTENT: order-2 on Mobile, order-1 on Desktop */}
-          <div className="flex-1 space-y-12 order-2 lg:order-1">
-            <div className="flex items-center gap-6 text-sm font-bold text-slate-700">
-              <div className="flex items-center gap-1.5"><Star className="h-4 w-4 text-amber-400 fill-amber-400" /> 4.8 <span className="text-slate-400 font-medium">(2,140 ratings)</span></div>
-              <div className="flex items-center gap-1.5"><Users className="h-4 w-4 text-slate-400" /> {selectedCourse.students} enrolled</div>
-            </div>
-
-            {/* What you'll learn */}
-            <section className="p-6 md:p-8 border-2 border-slate-100 rounded-3xl bg-white shadow-sm">
-              <h2 className="text-xl font-black mb-6">What you'll learn</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Build a structured financial system for your school from planning to execution.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Set up and manage accounting, cash flow, and financial workflows with clarity.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Implement budgeting, cost control, and data-driven financial decision-making.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Ensure compliance, tax readiness, and audit preparedness with a system approach.</p></div>
-              </div>
-            </section>
-             
-              {/* --- NEW: COURSE DESCRIPTION SECTION --- */}
-            <section className="px-1">
-              <h2 className="text-xl font-black mb-4">Description</h2>
-              <div className="prose prose-slate max-w-none space-y-4 text-slate-600 font-medium leading-relaxed">
-                <p>
-                  This course is designed for school leaders who want to move beyond unstructured financial practices and build a clear, controlled, and growth-ready financial system for their institution. From financial planning and accounting setup to budgeting, cash flow management, and compliance, this program walks you through every critical aspect step by step. </p>
-                <p>
-                  Instead of theory, you will work with practical frameworks, real-world scenarios, and ready-to-use templates to implement systems directly in your school. You will gain complete visibility over your finances, improve decision-making, reduce financial risks, and create a structured foundation for sustainable growth.
-                </p>
-                <p>By the end of this course, you will not just understand finance but will have a fully functional financial system in place, giving you clarity, control, and confidence to run your institution more efficiently and professionally.
-                
-                </p>
-                
-              </div>
-            </section>
-
-            {/* Course Content */}
-            <section>
-              <h2 className="text-xl font-black mb-6 px-1">Course Content</h2>
-              <div className="space-y-3">
-                <div className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center justify-between hover:border-slate-200 transition-colors shadow-sm"><div className="flex items-center gap-4"><BookOpen className="h-5 w-5 text-slate-400" /><p className="font-bold text-slate-900">Module 1: Introduction & Setup</p></div><span className="hidden sm:block text-xs font-black text-slate-400 tracking-widest uppercase">4 lessons • 45m</span></div>
-                <div className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center justify-between hover:border-slate-200 transition-colors shadow-sm"><div className="flex items-center gap-4"><BookOpen className="h-5 w-5 text-slate-400" /><p className="font-bold text-slate-900">Module 2: Core Fundamentals</p></div><span className="hidden sm:block text-xs font-black text-slate-400 tracking-widest uppercase">8 lessons • 2h 15m</span></div>
-              </div>
-            </section>
-            
-            {/* Instructor Profile */}
-            <section>
-              <h2 className="text-xl font-black mb-6 px-1">Your Instructor</h2>
-              <div className="flex items-center gap-5 p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                <div className="h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-indigo-100 flex items-center justify-center font-black text-indigo-600 shadow-inner text-xl shrink-0">
-                  {selectedCourse.instructor.split(' ').map((n: string) => n[0]).join('')}
-                </div>
-                <div>
-                  <h3 className="font-black text-lg md:text-xl text-slate-900">{selectedCourse.instructor}</h3>
-                  <p className="text-sm text-slate-500 font-semibold">Senior Educator & Industry Expert</p>
-                </div>
-              </div>
-            </section>
           </div>
 
         </div>
