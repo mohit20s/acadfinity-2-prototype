@@ -48,7 +48,7 @@ export default function LmsCatalogPage() {
             {selectedCourse.title}
           </h1>
           <p className="text-base md:text-lg text-slate-600 font-medium max-w-3xl">
-            Master the fundamentals and advance your career with this comprehensive, expert-led journey.
+            Build a complete, system-driven financial framework to manage, control, and grow your institution’s finances with clarity and confidence.
           </p>
         </section>
 
@@ -108,13 +108,26 @@ export default function LmsCatalogPage() {
             <section className="p-6 md:p-8 border-2 border-slate-100 rounded-3xl bg-white shadow-sm">
               <h2 className="text-xl font-black mb-6">What you'll learn</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Understand the core concepts and real-world applications.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Build a professional portfolio of completed projects.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Master industry-standard tools and workflows.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Gain a verifiable certificate to share on your resume.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Build a structured financial system for your school from planning to execution.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Set up and manage accounting, cash flow, and financial workflows with clarity.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Implement budgeting, cost control, and data-driven financial decision-making.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Ensure compliance, tax readiness, and audit preparedness with a system approach.</p></div>
               </div>
             </section>
-
+             
+              {/* --- NEW: COURSE DESCRIPTION SECTION --- */}
+            <section className="px-1">
+              <h2 className="text-xl font-black mb-4">Description</h2>
+              <div className="prose prose-slate max-w-none space-y-4 text-slate-600 font-medium leading-relaxed">
+                <p>
+                  Running an educational institution in India today requires more than just academic excellence; it requires a robust, transparent, and compliant financial backbone. This program is specifically designed for <strong className="text-slate-900">Directors, Trustees, and School Leaders</strong> who want to move away from chaotic manual processes to a data-driven financial framework.
+                </p>
+                <p>
+                  Throughout this journey, we deep-dive into the unique challenges of school finance—from optimizing fee structures and managing labour compliance (PF/ESI) to preparing your institution for successful loan facilitation. You won't just learn theory; you will get <strong className="text-slate-900">ready-to-use templates</strong> and checklists to implement in your school immediately.
+                </p>
+              </div>
+            </section>
+            
             {/* Course Content */}
             <section>
               <h2 className="text-xl font-black mb-6 px-1">Course Content</h2>
