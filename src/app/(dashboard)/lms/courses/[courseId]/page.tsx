@@ -30,19 +30,20 @@ const courseAssessments = [
 const syllabusHierarchy = [
   {
     id: 'm1', 
-    title: "Module 1: Algebra Fundamentals", 
+    title: "Module 1: Financial Framework", 
     status: "active",
     chapters: [
       {
         id: 'c1', 
-        title: "Chapter 1: The Basics of Variables",
+        title: "Chapter 1: INTRODUCTION",
         sections: [
           {
             id: 's1', 
-            title: "Section 1.1: What is a Variable?",
+            title: "Section 1.1: Welcome & Course Overview",
             items: [
-              { id: '101', title: "Pre-Read: Core Concepts", type: "Reading", duration: "5 Mins", status: "completed", icon: FileText },
-              { id: '102', title: "Introduction to Variables", type: "Video", duration: "12 Mins", status: "completed", icon: Video },
+               { id: '102', title: "Overview", type: "Video", duration: "12 Mins", status: "completed", icon: Video },
+              { id: '101', title: "Post-Read: Core Concepts", type: "Reading", duration: "5 Mins", status: "completed", icon: FileText },
+              
               { id: '103', title: "Doubt Clearing Session", type: "Recorded Live", duration: "45 Mins", status: "completed", icon: Radio },
               { id: '104', title: "Variables Worksheet", type: "Assignment", duration: "Required", status: "completed", icon: PenTool, refId: 'a1' },
               { id: '105', title: "Section 1.1 Evaluation", type: "Assessment", duration: "15 Qs", status: "completed", icon: Target, refId: 'q1' },
@@ -50,22 +51,22 @@ const syllabusHierarchy = [
           },
           {
             id: 's2', 
-            title: "Section 1.2: Using Variables in Expressions",
+            title: "Section 1.2: How to Use This Course",
             items: [
-              { id: '106', title: "Pre-Read: Expressions vs Equations", type: "Reading", duration: "8 Mins", status: "completed", icon: FileText },
-              { id: '107', title: "Building Expressions", type: "Video", duration: "15 Mins", status: "active", icon: Video },
-              { id: '108', title: "Section 1.2 Evaluation", type: "Assessment", duration: "10 Qs", status: "locked", icon: Target },
+              
+              { id: '107', title: "Implementation Guide", type: "Video", duration: "15 Mins", status: "active", icon: Video },
+              { id: '106', title: "Post read: Course Guide", type: "Reading", duration: "8 Mins", status: "completed", icon: FileText },
             ]
           }
         ]
       },
       {
         id: 'c2', 
-        title: "Chapter 2: Linear Equations",
+        title: "Chapter 2: Financial Planning",
         sections: [
           {
             id: 's3', 
-            title: "Section 2.1: One-Step Equations",
+            title: "Section 2.1: Financial Data Framework",
             items: [
               { id: '201', title: "Solving One-Step Equations", type: "Video", duration: "20 Mins", status: "locked", icon: Video },
               { id: '202', title: "Practical Lab", type: "Assignment", duration: "Required", status: "locked", icon: PenTool, refId: 'a2' },
