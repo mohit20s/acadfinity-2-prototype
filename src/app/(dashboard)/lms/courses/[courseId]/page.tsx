@@ -104,7 +104,7 @@ const liveClasses = [
 ];
 
 export default function CourseDetailsPage({ params }: { params: { courseId: string } }) {
-  const [activeTab, setActiveTab] = useState('syllabus');
+  const [activeTab, setActiveTab] = useState('content');
   const [readingMaterial, setReadingMaterial] = useState<string | null>(null);
   const router = useRouter();
 
@@ -148,7 +148,7 @@ export default function CourseDetailsPage({ params }: { params: { courseId: stri
       </div>
       
       <div className="flex border-b border-slate-200 px-2 scrollbar-hide overflow-x-auto sticky top-0 bg-slate-50/90 backdrop-blur-md z-20 -mx-4 sm:mx-0 px-4 sm:px-0">
-        {['content','live classes', 'assignments',   'resources'].map(tab => (
+        {['content','live classes', 'assignments', 'resources'].map(tab => (
           <button key={tab} onClick={() => setActiveTab(tab)} 
             className={cn("px-5 md:px-6 py-4 text-xs font-black uppercase tracking-widest border-b-4 transition-all whitespace-nowrap", 
             activeTab === tab ? "border-primary text-primary" : "border-transparent text-slate-400 hover:text-slate-600")}>
