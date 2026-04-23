@@ -120,14 +120,17 @@ export default function LmsCatalogPage() {
               <h2 className="text-xl font-black mb-4">Description</h2>
               <div className="prose prose-slate max-w-none space-y-4 text-slate-600 font-medium leading-relaxed">
                 <p>
-                  Running an educational institution in India today requires more than just academic excellence; it requires a robust, transparent, and compliant financial backbone. This program is specifically designed for <strong className="text-slate-900">Directors, Trustees, and School Leaders</strong> who want to move away from chaotic manual processes to a data-driven financial framework.
-                </p>
+                  This course is designed for school leaders who want to move beyond unstructured financial practices and build a clear, controlled, and growth-ready financial system for their institution. From financial planning and accounting setup to budgeting, cash flow management, and compliance, this program walks you through every critical aspect step by step. </p>
                 <p>
-                  Throughout this journey, we deep-dive into the unique challenges of school finance—from optimizing fee structures and managing labour compliance (PF/ESI) to preparing your institution for successful loan facilitation. You won't just learn theory; you will get <strong className="text-slate-900">ready-to-use templates</strong> and checklists to implement in your school immediately.
+                  Instead of theory, you will work with practical frameworks, real-world scenarios, and ready-to-use templates to implement systems directly in your school. You will gain complete visibility over your finances, improve decision-making, reduce financial risks, and create a structured foundation for sustainable growth.
                 </p>
+                <p>By the end of this course, you will not just understand finance but will have a fully functional financial system in place, giving you clarity, control, and confidence to run your institution more efficiently and professionally.
+                
+                </p>
+                
               </div>
             </section>
-            
+
             {/* Course Content */}
             <section>
               <h2 className="text-xl font-black mb-6 px-1">Course Content</h2>

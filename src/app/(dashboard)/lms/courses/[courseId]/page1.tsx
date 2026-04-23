@@ -12,6 +12,7 @@ import { usePrototypeStore } from '@/store/use-prototype-store';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
+
 // --- MOCK DATA ---
 const courseAssignments = [
   { id: 'a1', title: "Variables Worksheet", due: "Oct 25", status: "pending", type: "Homework" },
