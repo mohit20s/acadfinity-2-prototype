@@ -13,8 +13,8 @@ export default function SelectInstitutePage() {
 
       <div className="space-y-3">
         {/* Mock Educational Institute 1 */}
-        <Link 
-          href="/dashboard" 
+         <Link 
+          href="/dashboard" // <-- MUST BE /dashboard
           className="flex items-center justify-between p-4 border rounded-lg hover:border-primary hover:bg-slate-50 transition-colors group cursor-pointer"
         >
           <div className="flex items-center gap-4">
@@ -30,8 +30,9 @@ export default function SelectInstitutePage() {
         </Link>
 
         {/* Mock Educational Institute 2 */}
-        <Link 
-          href="/dashboard" 
+       
+         <Link 
+          href="/dashboard" // <-- MUST BE /dashboard
           className="flex items-center justify-between p-4 border rounded-lg hover:border-primary hover:bg-slate-50 transition-colors group cursor-pointer"
         >
           <div className="flex items-center gap-4">

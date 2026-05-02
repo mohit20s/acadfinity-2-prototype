@@ -13,17 +13,18 @@ export default function LoginPage() {
   const setStoreRole = usePrototypeStore((state) => state.setRole);
   const router = useRouter();
 
+
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (loginType === 'b2c') {
       setStoreRole('Independent Learner');
-      router.push('/lms');
+      router.push('/lms'); // B2C goes directly to the Learn Hub
     } else {
       setStoreRole(selectedRole);
-      router.push('/select-institute')
+      router.push('/select-institute'); // B2B chooses school, then goes to Dashboard
     }
   };
-
   return (
     <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200">
       <div className="text-center mb-6">

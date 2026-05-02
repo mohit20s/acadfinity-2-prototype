@@ -19,7 +19,7 @@ export function Sidebar() {
 
   // --- NEW: Hierarchical Navigation Structure ---
   const mainNav = [
-    { name: "Home", href: "/dashboard", icon: Home },
+    { name: "Home", href: "/dashboard", icon: Home }, 
   ];
 
   const learnNav = {
