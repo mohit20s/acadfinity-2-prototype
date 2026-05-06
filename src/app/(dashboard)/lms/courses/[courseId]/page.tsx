@@ -26,13 +26,13 @@ const courseAssessments = [
 // =========================================================================
 const syllabusHierarchy = [
   {
-    id: 'm0', title: "Module 0: INTRODUCTION", status: "completed",
+    id: 'm0', title: "INTRODUCTION", status: "completed",
     chapters: [
       {
         id: 'm0-c1', title: "Chapter 1: Welcome & Course Overview",
         items: [
           { id: '001', title: "Lecture Video", type: "Video", duration: "10 Mins", status: "completed", icon: Video },
-        { id: '003', title: "Course Guide PDF", type: "Resource", duration: "2 MB", status: "completed", icon: Download },
+        { id: '003', title: "Overview", type: "Resource", duration: "2 MB", status: "completed", icon: Download },
        
         ]
       },
