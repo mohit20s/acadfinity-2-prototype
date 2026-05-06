@@ -57,7 +57,7 @@ export default function LmsCatalogPage() {
                 Build a complete, system-driven financial framework to manage, control, and grow your institution’s finances with clarity and confidence.
               </p>
               <div className="flex items-center gap-6 text-sm font-bold text-slate-700">
-                <div className="flex items-center gap-1.5"><Star className="h-4 w-4 text-amber-400 fill-amber-400" /> 4.8 <span className="text-slate-400 font-medium">(2,140 ratings)</span></div>
+                <div className="flex items-center gap-1.5"><Star className="h-4 w-4 text-amber-400 fill-amber-400" /><Star className="h-4 w-4 text-amber-400 fill-amber-400" /><Star className="h-4 w-4 text-amber-400 fill-amber-400" /><Star className="h-4 w-4 text-amber-400 fill-amber-400" /> 4.8 <span className="text-slate-400 font-medium">(2,140 ratings)</span></div>
                 <div className="flex items-center gap-1.5"><Users className="h-4 w-4 text-slate-400" /> {selectedCourse.students} enrolled</div>
               </div>
             </section>
