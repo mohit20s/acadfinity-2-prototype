@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { 
   ArrowLeft, BookOpen, Clock, FileText, CheckCircle2, 
   Video, HelpCircle, ChevronRight, Award, Users, Target, 
-  ClipboardList, Trophy, Lock, Download, Calendar, PenTool, Radio, PlayCircle, ChevronDown, ListChecks, X, Bookmark
+  ClipboardList, Trophy, Lock, Download, Calendar, PenTool, Radio, PlayCircle, ChevronDown, ListChecks, X, Bookmark, Lightbulb, TrendingUp, Shield, AlertTriangle, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
@@ -486,237 +486,265 @@ const isLiveNow = true;
           Switch to Content tab to view the syllabus.
         </div>
       )}
-
-      {/* =========================================================================
-          DYNAMIC READING OVERLAY (Contains your EXACT specified text!)
+{/* =========================================================================
+          DYNAMIC READING OVERLAY (Premium Workbook Style)
           ========================================================================= */}
       {readingMaterial && (
-        <div className="absolute inset-0 z-50 bg-white text-slate-900 flex flex-col animate-in slide-in-from-bottom duration-300">
-          <div className="h-14 border-b border-slate-100 flex items-center justify-between px-4 shrink-0 bg-white shadow-sm">
-            <button onClick={() => setReadingMaterial(null)} className="flex items-center gap-2 text-slate-900 font-bold hover:text-primary">
-              <X className="h-5 w-5" /> Close View
+        <div className="fixed inset-0 z-[100] bg-slate-50 text-slate-900 flex flex-col animate-in slide-in-from-bottom duration-300">
+          
+          {/* Header */}
+          <div className="h-16 border-b border-slate-200 flex items-center justify-between px-4 md:px-8 shrink-0 bg-white shadow-sm pt-safe-area-inset-top sticky top-0 z-50">
+            <button onClick={() => setReadingMaterial(null)} className="flex items-center gap-2 text-slate-900 font-black hover:text-primary transition-colors bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-full text-xs uppercase tracking-widest">
+              <X className="h-4 w-4" /> Close Workbook
             </button>
             <div className="flex gap-2">
-              <button className="p-2 text-slate-400 hover:text-primary"><Bookmark className="h-5 w-5" /></button>
+              <button className="p-2 text-slate-400 hover:text-primary bg-slate-100 rounded-full"><Bookmark className="h-4 w-4" /></button>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-6 md:p-12 pb-24 max-w-4xl mx-auto w-full">
+          <div className="flex-1 overflow-y-auto pb-24">
              
-             {/* CONTENT: Course Guide PDF (ID: 003) */}
+             {/* =========================================================
+                 CONTENT: Course Guide PDF (ID: 003) 
+                 ========================================================= */}
              {readingMaterial === '003' && (
-               <div className="animate-in fade-in">
-                 <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight my-4">📘 FINANCE FRAMEWORK MODULE</h1>
-                 <h2 className="text-xl font-bold text-slate-500 mb-8">Course Guide (Professional Version)</h2>
+               <div className="animate-in fade-in max-w-4xl mx-auto w-full bg-white min-h-screen shadow-2xl">
+                 
+                 {/* Hero Image */}
+                 <div className="w-full h-64 md:h-96 relative bg-slate-900 overflow-hidden">
+                   <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Finance" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                   <div className="absolute bottom-8 left-8 right-8">
+                     <span className="bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3 inline-block">Course Guide</span>
+                     <h1 className="text-3xl md:text-5xl font-black text-white leading-tight">Financial Framework of Indian Education</h1>
+                   </div>
+                 </div>
 
-                 <article className="prose prose-slate prose-lg max-w-none mt-8">
-                   <h3>🎯 1. Course Overview</h3>
-                   <p>Welcome to the Finance Framework Module under the School Transformation Program.<br/>
-                   This course is designed to help educational institutions move from:<br/>
-                   <strong>Unstructured financial practices → System-driven financial management</strong></p>
+                 <div className="p-6 md:p-12 space-y-12">
+                   {/* Overview */}
+                   <section>
+                     <h2 className="text-2xl font-black flex items-center gap-2 mb-4"><Target className="h-6 w-6 text-primary" /> 1. Course Overview</h2>
+                     <p className="text-lg text-slate-600 font-medium leading-relaxed bg-slate-50 p-6 rounded-2xl border-l-4 border-primary">
+                       Welcome to the Finance Framework Module under the School Transformation Program. This course is designed to help educational institutions move from:<br/><br/>
+                       <span className="font-black text-slate-400 line-through">Unstructured financial practices</span> <ArrowRight className="inline h-5 w-5 text-primary mx-2" /> <span className="font-black text-primary">System-driven financial management</span>
+                     </p>
+                   </section>
 
-                   <h4>🧠 What This Course Will Help You Achieve</h4>
-                   <p>By the end of this program, you will be able to:</p>
-                   <ul>
-                     <li>Build a complete financial system for your school</li>
-                     <li>Structure and manage financial data effectively</li>
-                     <li>Implement accounting systems and workflows</li>
-                     <li>Understand and manage cash flow, budgeting, and control</li>
-                     <li>Ensure compliance and regulatory readiness</li>
-                     <li>Make informed financial decisions for growth</li>
-                   </ul>
+                   {/* What You'll Achieve Grid */}
+                   <section>
+                     <h3 className="text-xl font-black mb-6">🧠 What This Course Will Help You Achieve</h3>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                       {[
+                         "Build a complete financial system for your school",
+                         "Structure and manage financial data effectively",
+                         "Implement accounting systems and workflows",
+                         "Understand and manage cash flow, budgeting, and control",
+                         "Ensure compliance and regulatory readiness",
+                         "Make informed financial decisions for growth"
+                       ].map((text, i) => (
+                         <div key={i} className="flex items-start gap-3 p-4 border border-slate-100 rounded-2xl bg-white shadow-sm hover:border-emerald-200 transition-colors">
+                           <CheckCircle2 className="h-6 w-6 text-emerald-500 shrink-0" />
+                           <p className="font-bold text-slate-700 text-sm">{text}</p>
+                         </div>
+                       ))}
+                     </div>
+                   </section>
 
-                   <h4>🎯 Who This Course is For</h4>
-                   <ul>
-                     <li>School Owners</li>
-                     <li>Directors</li>
-                     <li>Principals</li>
-                     <li>Administrators</li>
-                     <li>Coaching Institute Owners</li>
-                   </ul>
+                   {/* Who is this for */}
+                   <section>
+                     <h3 className="text-xl font-black mb-4">🎯 Who This Course is For</h3>
+                     <div className="flex flex-wrap gap-3">
+                       {["School Owners", "Directors", "Principals", "Administrators", "Coaching Institute Owners"].map(aud => (
+                         <span key={aud} className="bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl shadow-md">{aud}</span>
+                       ))}
+                     </div>
+                   </section>
 
-                   <h4>📊 Course Outcome</h4>
-                   <blockquote className="border-l-4 border-primary pl-4 italic text-slate-600">
-                     “You will not just learn finance — you will build a structured financial operating system for your institution.”
-                   </blockquote>
+                   {/* Outcome Banner */}
+                   <section className="bg-gradient-to-br from-emerald-500 to-teal-700 rounded-3xl p-10 text-center shadow-2xl relative overflow-hidden">
+                      <Trophy className="absolute -left-10 -bottom-10 h-64 w-64 text-white opacity-10" />
+                      <h2 className="text-xs font-black text-emerald-100 uppercase tracking-widest mb-4 relative z-10">Course Outcome</h2>
+                      <p className="text-2xl md:text-3xl font-black text-white leading-tight relative z-10 italic">
+                        “You will not just learn finance — you will build a structured financial operating system for your institution.”
+                      </p>
+                   </section>
 
-                   <h3>🧭 2. Course Structure</h3>
-                   <p>This course is divided into 5 structured modules, each designed to build a complete financial system step-by-step.</p>
+                   {/* Course Structure (Cards) */}
+                   <section>
+                     <h2 className="text-2xl font-black flex items-center gap-2 mb-2"><BookOpen className="h-6 w-6 text-primary" /> 2. Course Structure</h2>
+                     <p className="text-slate-500 font-medium mb-6">This course is divided into 5 structured modules, each designed to build a complete financial system step-by-step.</p>
+                     
+                     <div className="space-y-4">
+                       {[
+                         { m: "Module 1", t: "Financial Planning & Data Structuring", o: "Build financial clarity", l: ["Financial data framework", "Historical analysis", "Revenue and expense structuring"] },
+                         { m: "Module 2", t: "Accounting System Setup", o: "Build your accounting foundation", l: ["Chart of Accounts (COA)", "Accounting logic", "Books & registers", "Complete accounting workflow"] },
+                         { m: "Module 3", t: "Loan Facilitation", o: "Prepare for financial growth", l: ["Types of loans", "Documentation", "Financial readiness", "Cash flow and repayment planning"] },
+                         { m: "Module 4", t: "Financial Control, Budgeting & Decision Making", o: "Control and optimize finances", l: ["Budgeting system", "Cost control strategies", "Surplus and fund planning", "Financial decision-making framework"] },
+                         { m: "Module 5", t: "Compliance & Regulatory System", o: "Ensure legal and operational security", l: ["PF, ESI, labour compliance", "TDS & GST basics", "12AB / 80G", "Compliance calendar system"] }
+                       ].map((mod) => (
+                         <div key={mod.m} className="bg-white border-2 border-slate-100 p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                           <div className="md:w-1/3 border-b md:border-b-0 md:border-r border-slate-100 pb-4 md:pb-0 md:pr-4">
+                             <span className="text-[10px] font-black uppercase tracking-widest text-primary">{mod.m}</span>
+                             <h4 className="font-black text-lg text-slate-900 leading-tight mt-1">{mod.t}</h4>
+                             <p className="text-xs font-bold text-slate-400 mt-2">Objective: {mod.o}</p>
+                           </div>
+                           <div className="md:w-2/3">
+                             <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-3">You will learn:</p>
+                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                               {mod.l.map(item => <div key={item} className="flex items-center gap-2 text-sm font-semibold text-slate-700"><CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0"/> {item}</div>)}
+                             </div>
+                           </div>
+                         </div>
+                       ))}
+                     </div>
+                   </section>
 
-                   <h4>📘 Module 1 – Financial Planning & Data Structuring</h4>
-                   <p><strong>Objective:</strong> Build financial clarity<br/>
-                   <strong>You will learn:</strong></p>
-                   <ul><li>Financial data framework</li><li>Historical analysis</li><li>Revenue and expense structuring</li></ul>
+                   {/* Learning Deliverables */}
+                   <section>
+                     <h2 className="text-2xl font-black flex items-center gap-2 mb-6"><ListChecks className="h-6 w-6 text-primary" /> 3. Learning Deliverables</h2>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100"><div className="h-12 w-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4"><Video className="h-6 w-6" /></div><h3 className="font-black text-lg mb-3">Video Learning</h3><ul className="space-y-2 text-sm font-semibold text-slate-600"><li>• Concept explanation</li><li>• Real-life examples</li><li>• Step-by-step guidance</li></ul></div>
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100"><div className="h-12 w-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4"><FileText className="h-6 w-6" /></div><h3 className="font-black text-lg mb-3">Content Notes</h3><ul className="space-y-2 text-sm font-semibold text-slate-600"><li>• Structured explanations</li><li>• Key frameworks</li><li>• Simplified concepts</li></ul></div>
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100"><div className="h-12 w-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4"><Download className="h-6 w-6" /></div><h3 className="font-black text-lg mb-3">Practical Templates</h3><ul className="space-y-2 text-sm font-semibold text-slate-600"><li>• Ready-to-use formats</li><li>• Excel sheets</li><li>• Trackers and tools</li></ul></div>
+                        <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100"><div className="h-12 w-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4"><PenTool className="h-6 w-6" /></div><h3 className="font-black text-lg mb-3">Assessments & Assignments</h3><ul className="space-y-2 text-sm font-semibold text-slate-600"><li>• Concept + Application Quizzes</li><li>• Scenario-based questions</li><li>• Real implementation tasks</li></ul></div>
+                     </div>
+                   </section>
 
-                   <h4>📘 Module 2 – Accounting System Setup</h4>
-                   <p><strong>Objective:</strong> Build your accounting foundation<br/>
-                   <strong>You will learn:</strong></p>
-                   <ul><li>Chart of Accounts (COA)</li><li>Accounting logic</li><li>Books & registers</li><li>Complete accounting workflow</li></ul>
-
-                   <h4>📘 Module 3 – Loan Facilitation</h4>
-                   <p><strong>Objective:</strong> Prepare for financial growth<br/>
-                   <strong>You will learn:</strong></p>
-                   <ul><li>Types of loans</li><li>Documentation</li><li>Financial readiness</li><li>Cash flow and repayment planning</li></ul>
-
-                   <h4>📘 Module 4 – Financial Control, Budgeting & Decision Making</h4>
-                   <p><strong>Objective:</strong> Control and optimize finances<br/>
-                   <strong>You will learn:</strong></p>
-                   <ul><li>Budgeting system</li><li>Cost control strategies</li><li>Surplus and fund planning</li><li>Financial decision-making framework</li></ul>
-
-                   <h4>📘 Module 5 – Compliance & Regulatory System</h4>
-                   <p><strong>Objective:</strong> Ensure legal and operational security<br/>
-                   <strong>You will learn:</strong></p>
-                   <ul><li>PF, ESI, labour compliance</li><li>TDS & GST basics</li><li>12AB / 80G</li><li>Compliance calendar system</li></ul>
-
-                   <h3>🔁 3. Learning Methodology</h3>
-                   <p>This course follows a practical implementation approach.<br/>Each Chapter includes:</p>
-                   <ul>
-                     <li><strong>🎥 Video Learning:</strong> Concept explanation, Real-life examples, Step-by-step guidance</li>
-                     <li><strong>📘 Content Notes:</strong> Structured explanations, Key frameworks, Simplified concepts</li>
-                     <li><strong>📊 Practical Templates:</strong> Ready-to-use formats, Excel sheets, Trackers and tools</li>
-                   </ul>
-
-                   <h4>❓ Assessments</h4>
-                   <ul><li>Quizzes (concept + application)</li><li>Scenario-based questions</li></ul>
-
-                   <h4>📦 Assignments</h4>
-                   <ul><li>Real implementation tasks</li><li>System-building exercises</li></ul>
-
-                   <blockquote className="border-l-4 border-primary pl-4 italic text-slate-600 font-bold mt-8">
-                     “You will learn → apply → build → and implement”<br/><br/>
-                     “If you follow this course step by step…”<br/>
-                     You will not just understand finance…<br/>
-                     You will build a complete financial system for your school.<br/>
-                     Start implementing. Start transforming.
-                   </blockquote>
-                 </article>
-                 <div className="mt-10 pt-6 border-t border-slate-100 flex justify-center">
-                   <Button onClick={() => alert("Downloading Course Guide PDF...")} className="h-14 px-8 rounded-full font-black shadow-lg bg-emerald-600 hover:bg-emerald-700 text-lg">
-                     <Download className="h-5 w-5 mr-2" /> Download Course Guide PDF
-                   </Button>
+                   <div className="mt-10 pt-10 border-t-2 border-dashed border-slate-200 text-center">
+                     <p className="text-xl font-black text-slate-900 mb-6 uppercase tracking-widest">You will learn → apply → build → implement</p>
+                     <Button onClick={() => alert("Downloading Course Guide PDF...")} className="h-14 px-8 rounded-full font-black shadow-xl shadow-primary/20 text-lg w-full md:w-auto">
+                       <Download className="h-5 w-5 mr-2" /> Download Course Guide PDF
+                     </Button>
+                   </div>
                  </div>
                </div>
              )}
 
-             {/* CONTENT: Content Notes (ID: 102) */}
+             {/* =========================================================
+                 CONTENT: Content Notes - 6 Pillars (ID: 102) 
+                 ========================================================= */}
              {readingMaterial === '102' && (
-               <div className="animate-in fade-in">
-                 <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Pre-Read Material</span>
-                 <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight my-4">📘 Chapter 1.1: Financial Data Framework</h1>
-                 <h2 className="text-xl font-bold text-slate-500 mb-8">Topic: 6 SIX Data Pillars for Financial Clarity & Control</h2>
-
-                 <article className="prose prose-slate prose-lg max-w-none mt-8">
-                   <h3>🧭 1. Introduction to Financial Data Framework</h3>
-                   <p>Before building any financial system, it is essential to establish clarity and structure in financial data.</p>
-                   <p><strong>Key Principle:</strong><br/>Effective financial management begins with visibility of accurate and structured data.</p>
-                   
-                   <p><strong>Common Challenges in Schools:</strong><br/>In many educational institutions, financial data is:</p>
-                   <ul>
-                     <li>Scattered across multiple sources</li>
-                     <li>Incomplete or outdated</li>
-                     <li>Not categorized or structured</li>
-                   </ul>
-
-                   <p><strong>Impact of Poor Data Structure:</strong></p>
-                   <ul>
-                     <li>Delayed decision-making</li>
-                     <li>Unpredictable cash flow</li>
-                     <li>Weak financial control</li>
-                     <li>Increased risk of inefficiencies</li>
-                   </ul>
-
-                   <p><strong>Objective of This Chapter:</strong><br/>To build a strong financial data foundation by organizing all financial information into 6 structured data pillars.</p>
-
-                   <h3>🧩 2. The 6 SIX Financial Data Pillars</h3>
-                   <p>These pillars form the base of a system-driven financial framework.</p>
-
-                   <h4>🧾 Pillar 1: Historical Financial Records</h4>
-                   <p><strong>Definition:</strong> Financial data from previous years that reflects the institution’s past performance.</p>
-                   <p><strong>Data to be Collected:</strong></p>
-                   <ul><li>Income & Expenditure Statements (last 2–3 years)</li><li>Balance Sheets (last 2–3 years)</li><li>Current year provisional financials</li></ul>
-                   <p><strong>Purpose:</strong></p>
-                   <ul><li>Analyze revenue growth trends</li><li>Understand cost behavior patterns</li><li>Identify inefficiencies and leakages</li></ul>
-                   <p><strong>Key Insight:</strong> Financial planning without historical data leads to assumptions rather than informed decisions.</p>
-
-                   <h4>💰 Pillar 2: Revenue & Fee Data</h4>
-                   <p><strong>Definition:</strong> Structured understanding of all income sources and fee collection mechanisms.</p>
-                   <p><strong>Data to be Collected:</strong></p>
-                   <ul><li>Class-wise fee structure</li><li>Student strength by class</li><li>Fee collection patterns</li><li>Outstanding dues</li></ul>
-                   <p><strong>Key Concept: Revenue Realization</strong><br/>Planned revenue is not equal to actual revenue.<br/>Actual revenue depends on effective collection.</p>
-                   <p><strong>Revenue Gap Analysis:</strong> Compare Expected Revenue with Actual Collection.</p>
-                   <p><strong>Purpose:</strong></p>
-                   <ul><li>Identify collection inefficiencies</li><li>Detect weak follow-up systems</li><li>Highlight cash flow pressure points</li></ul>
-
-                   <h4>💸 Pillar 3: Expense Structure</h4>
-                   <p><strong>Definition:</strong> Categorization and analysis of all institutional expenses.</p>
-                   <p><strong>Expense Categories:</strong></p>
-                   <ul><li>Salaries (Teaching & Non-teaching)</li><li>Operational Expenses (utilities, maintenance, admin)</li><li>Vendor Payments</li></ul>
-                   <p><strong>Key Financial Metric:</strong> Salary Cost typically accounts for 60–70% of total expenses in educational institutions.</p>
-                   <p><strong>Importance/Purpose:</strong></p>
-                   <ul><li>Identifies major cost drivers</li><li>Helps in cost control and optimization</li><li>Supports budgeting decisions</li></ul>
-
-                   <h4>💳 Pillar 4: Cash Flow & Banking Data</h4>
-                   <p><strong>Definition:</strong> Tracking actual movement of cash and bank balances.</p>
-                   <p><strong>Data to be Collected:</strong></p>
-                   <ul><li>Bank statements (last 6–12 months)</li><li>Current cash reserves</li><li>Loan and liability details</li></ul>
-                   <p><strong>Critical Financial Insight:</strong> Profitability does not guarantee liquidity.</p>
-                   <p><strong>Explanation/Challenges:</strong> An institution may be profitable but still face cash shortages due to delayed fee collections, fixed operational expenses, or poor cash flow management.</p>
-                   <p><strong>Importance/Purpose:</strong></p>
-                   <ul><li>Ensures operational stability</li><li>Helps manage payment cycles</li><li>Prevents financial stress</li></ul>
-
-                   <h4>🏗️ Pillar 5: Infrastructure & CAPEX Planning</h4>
-                   <p><strong>Definition:</strong> Planning and tracking of capital expenditures and infrastructure investments.</p>
-                   <p><strong>Includes (Data to be Collected):</strong></p>
-                   <ul><li>Infrastructure expansion</li><li>Building upgrades</li><li>Major equipment purchases</li><li>Ongoing development projects</li></ul>
-                   <p><strong>Purpose:</strong></p>
-                   <ul><li>Align financial capacity with growth plans</li><li>Avoid over-expansion</li><li>Ensure sustainable development</li></ul>
-                   <p><strong>Key Insight:</strong> Growth must be financially supported. Unplanned expansion creates financial pressure.</p>
-
-                   <h4>📋 Pillar 6: Statutory & Compliance Financials</h4>
-                   <p><strong>Definition:</strong> Financial data related to regulatory and legal compliance.</p>
-                   <p><strong>Data to be Maintained/Collected:</strong></p>
-                   <ul><li>GST records (if applicable)</li><li>PF / ESIC records</li><li>Audit reports</li></ul>
-                   <p><strong>Importance/Purpose:</strong></p>
-                   <ul><li>Ensures legal compliance</li><li>Reduces risk of penalties</li><li>Maintains operational continuity</li></ul>
-                   <p><strong>Key Insight:</strong> Compliance is a critical component of financial discipline and risk management.</p>
-
-                   <h3>🧠 3. Strategic Inputs for Financial Planning</h3>
-                   <p>In addition to financial data, institutions must define:</p>
-                   <ul><li>Growth targets (enrollment, expansion)</li><li>New programs or initiatives</li><li>Key financial concerns and priorities</li></ul>
-                   <p><strong>Purpose:</strong> To ensure that financial systems are aligned with institutional vision and long-term strategy.</p>
-
-                   <h3>📊 4. Learning Outcome</h3>
-                   <p>By the end of this chapter, you will:</p>
-                   <ul><li>Understand the structure of financial data</li><li>Identify key financial data sources</li><li>Organize data into a structured framework</li><li>Build the foundation for financial planning and control</li></ul>
-
-                   <h3>📦 5. Implementation Support</h3>
-                   <p>To assist in execution, the following resources are provided:</p>
-                   <ul>
-                     <li>Financial Data Collection Template</li>
-                     <li>Revenue & Expense Mapping Sheets</li>
-                     <li>Coordination Guidelines with Accountant / CA</li>
-                   </ul>
-                   <p><strong>Instruction:</strong> Begin collecting and organizing your institution’s financial data using these tools.</p>
-
-                   <h3>🚀 6. Next Step</h3>
-                   <p>Once your financial data is structured, the next step is to analyze and interpret this data effectively.<br/>
-                   <strong>Upcoming Chapter:</strong> Historical Financial Analysis (Understanding trends, patterns, and financial insights)</p>
-
-                   <h3>🔑 Final Note</h3>
-                   <p>The strength of your financial system depends on the quality of your data foundation.</p>
-                 </article>
+               <div className="animate-in fade-in max-w-4xl mx-auto w-full bg-white min-h-screen shadow-2xl">
                  
-                 <div className="mt-10 pt-6 border-t border-slate-100 flex justify-center">
-                   <Button onClick={() => setReadingMaterial(null)} className="h-14 px-10 rounded-full font-black text-lg shadow-xl">
-                     Mark as Read & Continue
-                   </Button>
+                 <div className="w-full h-48 md:h-64 relative bg-blue-900 overflow-hidden">
+                   <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="Data" className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                   <div className="absolute bottom-8 left-8 right-8">
+                     <span className="bg-amber-500 text-slate-900 text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3 inline-block">Chapter 1.1 Content Notes</span>
+                     <h1 className="text-2xl md:text-4xl font-black text-white leading-tight">6 Data Pillars for Financial Clarity & Control</h1>
+                   </div>
+                 </div>
+
+                 <div className="p-6 md:p-12 space-y-12">
+                   
+                   <section>
+                     <h2 className="text-2xl font-black mb-4">1. Introduction to Financial Data Framework</h2>
+                     <p className="text-slate-600 font-medium text-lg mb-6">Before building any financial system, it is essential to establish clarity and structure in financial data.</p>
+                     
+                     <div className="bg-primary/5 border border-primary/20 p-6 rounded-2xl mb-8">
+                        <div className="flex items-center gap-2 mb-2"><Lightbulb className="h-5 w-5 text-primary" /><h4 className="font-black text-primary uppercase tracking-widest text-xs">Key Principle</h4></div>
+                        <p className="font-bold text-slate-800 text-lg">Effective financial management begins with visibility of accurate and structured data.</p>
+                     </div>
+
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       <div className="bg-rose-50 border border-rose-100 p-6 rounded-2xl">
+                         <h4 className="font-black text-rose-700 mb-3 flex items-center gap-2"><AlertTriangle className="h-5 w-5" /> Common Challenges</h4>
+                         <ul className="space-y-2 text-sm font-semibold text-rose-900/80 list-disc pl-4">
+                           <li>Data scattered across multiple sources</li>
+                           <li>Incomplete or outdated ledgers</li>
+                           <li>Not categorized or structured</li>
+                         </ul>
+                       </div>
+                       <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl">
+                         <h4 className="font-black text-slate-900 mb-3">Impact of Poor Data</h4>
+                         <ul className="space-y-2 text-sm font-semibold text-slate-600 list-disc pl-4">
+                           <li>Delayed decision-making</li>
+                           <li>Unpredictable cash flow</li>
+                           <li>Weak financial control & increased inefficiencies</li>
+                         </ul>
+                       </div>
+                     </div>
+                   </section>
+
+                   <section>
+                     <h2 className="text-3xl font-black mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-500">The 6 Financial Data Pillars</h2>
+                     
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       {/* Pillar 1 */}
+                       <div className="border-2 border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden">
+                         <div className="absolute -right-4 -top-4 opacity-5 text-9xl">🧾</div>
+                         <div className="h-12 w-12 bg-slate-900 text-white rounded-xl flex items-center justify-center font-black text-xl mb-4">1</div>
+                         <h3 className="font-black text-xl mb-2">Historical Financial Records</h3>
+                         <p className="text-sm text-slate-500 font-medium mb-4">Financial data from previous years that reflects the institution’s past performance.</p>
+                         <div className="bg-slate-50 p-4 rounded-xl">
+                           <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Data to Collect</p>
+                           <ul className="text-xs font-bold text-slate-700 space-y-1"><li>• Income & Expenditure (2-3 yrs)</li><li>• Balance Sheets</li><li>• Current year provisionals</li></ul>
+                         </div>
+                       </div>
+
+                       {/* Pillar 2 */}
+                       <div className="border-2 border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden">
+                         <div className="absolute -right-4 -top-4 opacity-5 text-9xl">💰</div>
+                         <div className="h-12 w-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center font-black text-xl mb-4">2</div>
+                         <h3 className="font-black text-xl mb-2">Revenue & Fee Data</h3>
+                         <p className="text-sm text-slate-500 font-medium mb-4">Structured understanding of all income sources and fee collection mechanisms.</p>
+                         <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                           <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-2">Revenue Gap Analysis</p>
+                           <p className="text-xs font-bold text-emerald-900">Compare <strong>Expected Revenue</strong> with <strong>Actual Collection</strong> to detect weak follow-ups.</p>
+                         </div>
+                       </div>
+
+                       {/* Pillar 3 */}
+                       <div className="border-2 border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden">
+                         <div className="absolute -right-4 -top-4 opacity-5 text-9xl">💸</div>
+                         <div className="h-12 w-12 bg-rose-500 text-white rounded-xl flex items-center justify-center font-black text-xl mb-4">3</div>
+                         <h3 className="font-black text-xl mb-2">Expense Structure</h3>
+                         <p className="text-sm text-slate-500 font-medium mb-4">Categorization and analysis of all institutional expenses.</p>
+                         <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
+                           <p className="text-[10px] font-black uppercase tracking-widest text-rose-600 mb-2">Key Metric</p>
+                           <p className="text-xs font-bold text-rose-900">Salary Cost typically accounts for <strong>60–70%</strong> of total expenses in educational institutions.</p>
+                         </div>
+                       </div>
+
+                       {/* Pillar 4 */}
+                       <div className="border-2 border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden">
+                         <div className="absolute -right-4 -top-4 opacity-5 text-9xl">💳</div>
+                         <div className="h-12 w-12 bg-amber-500 text-white rounded-xl flex items-center justify-center font-black text-xl mb-4">4</div>
+                         <h3 className="font-black text-xl mb-2">Cash Flow & Banking</h3>
+                         <p className="text-sm text-slate-500 font-medium mb-4">Tracking actual movement of cash, bank balances, and liabilities.</p>
+                         <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+                           <p className="text-[10px] font-black uppercase tracking-widest text-amber-600 mb-2">Critical Insight</p>
+                           <p className="text-xs font-bold text-amber-900">Profitability does <strong>not</strong> guarantee liquidity. Delayed fees can still cause cash shortages.</p>
+                         </div>
+                       </div>
+
+                       {/* Pillar 5 & 6 Combos */}
+                       <div className="border-2 border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden">
+                         <div className="h-12 w-12 bg-indigo-500 text-white rounded-xl flex items-center justify-center font-black text-xl mb-4">5</div>
+                         <h3 className="font-black text-xl mb-2">Infrastructure & CAPEX</h3>
+                         <p className="text-sm text-slate-500 font-medium">Align financial capacity with growth plans. Unplanned expansion creates financial pressure.</p>
+                       </div>
+                       
+                       <div className="border-2 border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden">
+                         <div className="h-12 w-12 bg-teal-500 text-white rounded-xl flex items-center justify-center font-black text-xl mb-4">6</div>
+                         <h3 className="font-black text-xl mb-2">Statutory & Compliance</h3>
+                         <p className="text-sm text-slate-500 font-medium">Maintain GST, PF, ESIC, and Audit reports to reduce risk of penalties and ensure continuity.</p>
+                       </div>
+                     </div>
+                   </section>
+
+                   <div className="mt-10 pt-10 border-t border-slate-200 flex justify-center">
+                     <Button onClick={() => setReadingMaterial(null)} className="h-14 px-10 rounded-full font-black text-lg shadow-xl shadow-primary/20">
+                       Mark as Read & Continue
+                     </Button>
+                   </div>
                  </div>
                </div>
              )}
 
              {/* CONTENT: XLSX Download Template (ID: 103) */}
              {readingMaterial === '103' && (
-               <div className="flex flex-col items-center justify-center text-center py-20 animate-in zoom-in-95">
+               <div className="flex flex-col items-center justify-center text-center py-20 px-4 animate-in zoom-in-95 bg-white min-h-screen">
                  <div className="h-32 w-32 rounded-[2rem] bg-emerald-100 text-emerald-600 flex items-center justify-center mb-8 shadow-2xl shadow-emerald-500/20 border-4 border-white">
                    <Download className="h-16 w-16" />
                  </div>
@@ -724,7 +752,7 @@ const isLiveNow = true;
                  <p className="text-slate-500 font-medium max-w-lg mx-auto mb-10 text-lg">
                    Ready-to-use Excel format to help you structure your historical records, fee data, and expense tracking.
                  </p>
-                 <Button onClick={() => alert("Downloading XLSX File...")} className="h-16 px-12 rounded-full font-black text-xl bg-emerald-600 hover:bg-emerald-700 shadow-2xl shadow-emerald-500/30">
+                 <Button onClick={() => alert("Downloading XLSX File...")} className="h-16 px-12 rounded-full font-black text-xl bg-emerald-600 hover:bg-emerald-700 shadow-2xl shadow-emerald-500/30 w-full md:w-auto">
                    Download .XLSX File
                  </Button>
                  <Button variant="ghost" onClick={() => setReadingMaterial(null)} className="mt-6 font-bold text-slate-400 hover:text-slate-900">
@@ -733,18 +761,9 @@ const isLiveNow = true;
                </div>
              )}
 
-             {/* Fallback for any other reading materials not explicitly defined above */}
-             {!['003','102','103'].includes(readingMaterial) && (
-               <div className="text-center py-20 animate-in fade-in">
-                 <h2 className="text-2xl font-bold text-slate-400">Content loading...</h2>
-                 <Button onClick={() => setReadingMaterial(null)} className="mt-6">Close</Button>
-               </div>
-             )}
-
           </div>
         </div>
       )}
-
-    </div>
+        </div>
   );
 }

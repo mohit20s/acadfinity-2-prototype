@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { 
   Search, BookOpen, Clock, ChevronRight, PlayCircle, Star,
-  CheckCircle2, Video, Download, Award, ArrowLeft, Users, Plus, Flame
+  CheckCircle2, Video, Download, Award, ArrowLeft, Users, Plus, Flame, Target, PenTool, Check
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -12,9 +12,9 @@ import { usePrototypeStore } from "@/store/use-prototype-store";
 
 // --- MOCK DATA ---
 const courses = [
-  { id: 'FF-a01', title: "Financial Framework", instructor: "Mohit Gotecha", students: 32, progress: 65, type: 'academic', price: "Free", oldPrice: null },
+  { id: 'FF-a01', title: "Financial Framework of Indian Education", instructor: "Mohit Gotecha", students: 340, progress: 65, type: 'academic', price: "Free", oldPrice: null },
   { id: 'phy-g9', title: "Grade 9 - Physics", instructor: "Ravi Kumar", students: 28, progress: 40, type: 'academic', price: "Free", oldPrice: null },
-  { id: 'ai-basics', title: "Financial Framework of Indian Education", instructor: "Mohit G.", students: 150, progress: 0, type: 'outskill', price: "₹2,500", oldPrice: "₹4,000" },
+  { id: 'ai-basics', title: "Advanced Python & AI Basics", instructor: "Mohit G.", students: 150, progress: 0, type: 'outskill', price: "₹2,500", oldPrice: "₹4,000" },
   { id: 'design-pro', title: "Graphic Design Masterclass", instructor: "Sarah P.", students: 85, progress: 0, type: 'outskill', price: "₹1,999", oldPrice: "₹4,999" },
 ];
 
@@ -28,8 +28,7 @@ export default function LmsCatalogPage() {
   const availableCourses = courses.filter(c => c.progress === 0);
   const isAdmin = currentRole === "Director" || currentRole === "Educational Institute Admin" || currentRole === "Principal";
 
- 
- // ==========================================
+  // ==========================================
   // VIEW 1: DETAILED COURSE PURCHASE PAGE (PDP)
   // ==========================================
   if (view === 'purchase' && selectedCourse) {
@@ -46,15 +45,15 @@ export default function LmsCatalogPage() {
           {/* LEFT SIDE (Desktop): Contains Title AND Content */}
           <div className="flex-1 space-y-12 order-2 lg:order-1 flex flex-col">
             
-            {/* 1. TITLE SECTION (Moved inside the left column) */}
+            {/* 1. TITLE SECTION */}
             <section className="mb-2 space-y-3 md:mb-0">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-100 text-rose-600 text-[10px] font-black mb-4 uppercase tracking-widest">
-                 {selectedCourse.type}
+                 School Transformation Program
               </div>
               <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 mb-4 leading-tight">
                 {selectedCourse.title}
               </h1>
-              <p className="text-base md:text-lg text-slate-600 font-medium max-w-3xl mb-6">
+              <p className="text-base md:text-xl text-slate-600 font-medium max-w-3xl mb-6 leading-relaxed">
                 Build a complete, system-driven financial framework to manage, control, and grow your institution’s finances with clarity and confidence.
               </p>
               <div className="flex items-center gap-6 text-sm font-bold text-slate-700">
@@ -63,34 +62,86 @@ export default function LmsCatalogPage() {
               </div>
             </section>
 
-            {/* What you'll learn */}
-            <section className="p-6 md:p-8  border-2 border-slate-100 rounded-3xl bg-white shadow-sm">
-              <h2 className="text-xl font-black mb-6">What you'll learn</h2>
+            {/* --- NEW CONTENT: What This Course Will Help You Achieve --- */}
+            <section className="p-6 md:p-8 border-2 border-slate-100 rounded-3xl bg-white shadow-sm">
+              <h2 className="text-xl md:text-2xl font-black mb-6 flex items-center gap-2"><Target className="h-6 w-6 text-primary" /> What you will achieve</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Build a structured financial system for your school from planning to execution.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Set up and manage accounting, cash flow, and financial workflows with clarity.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Implement budgeting, cost control, and data-driven financial decision-making.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Ensure compliance, tax readiness, and audit preparedness with a system approach.</p></div>
-              </div>
-            </section>
-             
-            <section className="px-1">
-              <h2 className="text-xl font-black mb-4">Description</h2>
-              <div className="prose prose-slate max-w-none space-y-4 text-slate-600 font-medium leading-relaxed">
-                <p>This course is designed for school leaders who want to move beyond unstructured financial practices and build a clear, controlled, and growth-ready financial system for their institution. From financial planning and accounting setup to budgeting, cash flow management, and compliance, this program walks you through every critical aspect step by step.</p>
-                <p>Instead of theory, you will work with practical frameworks, real-world scenarios, and ready-to-use templates to implement systems directly in your school. You will gain complete visibility over your finances, improve decision-making, reduce financial risks, and create a structured foundation for sustainable growth.</p>
-                <p>By the end of this course, you will not just understand finance but will have a fully functional financial system in place, giving you clarity, control, and confidence to run your institution more efficiently and professionally.</p>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Build a complete financial system for your school.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Structure and manage financial data effectively.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Implement accounting systems and workflows.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Understand and manage cash flow, budgeting, and control.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Ensure compliance and regulatory readiness.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" /><p className="font-semibold text-slate-700">Make informed financial decisions for growth.</p></div>
               </div>
             </section>
 
+            {/* --- NEW CONTENT: Who This Course is For --- */}
+            <section className="px-1">
+              <h2 className="text-xl font-black mb-4">Who This Course is For</h2>
+              <div className="flex flex-wrap gap-3">
+                {["School Owners", "Directors", "Principals", "Administrators", "Coaching Institute Owners"].map(audience => (
+                  <span key={audience} className="bg-slate-100 border border-slate-200 text-slate-700 font-bold px-4 py-2 rounded-full text-sm">
+                    {audience}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* --- NEW CONTENT: Course Outcome Banner --- */}
+            <section className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border-2 border-emerald-500/20 rounded-3xl p-8 md:p-10 text-center relative overflow-hidden">
+               <div className="absolute -right-10 -top-10 opacity-10"><Award className="h-40 w-40 text-emerald-500" /></div>
+               <h2 className="text-xs font-black text-emerald-600 uppercase tracking-widest mb-4">Course Outcome</h2>
+               <p className="text-xl md:text-3xl font-black text-slate-900 leading-tight relative z-10 italic">
+                 “You will not just learn finance — <br className="hidden md:block"/>you will build a structured financial operating system for your institution.”
+               </p>
+            </section>
+
+            {/* --- NEW CONTENT: Deliverables (Learning Methodology) --- */}
+            <section className="px-1">
+              <h2 className="text-xl font-black mb-2">Learning Methodology</h2>
+              <p className="text-slate-500 font-medium mb-6">This course follows a practical implementation approach. Each module includes:</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white border-2 border-slate-100 p-6 rounded-2xl shadow-sm hover:border-primary/30 transition-colors">
+                   <div className="flex items-center gap-3 mb-3"><div className="p-2 bg-blue-50 text-blue-600 rounded-xl"><Video className="h-5 w-5" /></div><h3 className="font-black text-lg">Video Learning</h3></div>
+                   <ul className="text-sm font-medium text-slate-600 space-y-1 ml-12 list-disc pl-4"><li>Concept explanation</li><li>Real-life examples</li><li>Step-by-step guidance</li></ul>
+                </div>
+                <div className="bg-white border-2 border-slate-100 p-6 rounded-2xl shadow-sm hover:border-primary/30 transition-colors">
+                   <div className="flex items-center gap-3 mb-3"><div className="p-2 bg-amber-50 text-amber-600 rounded-xl"><BookOpen className="h-5 w-5" /></div><h3 className="font-black text-lg">Content Notes</h3></div>
+                   <ul className="text-sm font-medium text-slate-600 space-y-1 ml-12 list-disc pl-4"><li>Structured explanations</li><li>Key frameworks</li><li>Simplified concepts</li></ul>
+                </div>
+                <div className="bg-white border-2 border-slate-100 p-6 rounded-2xl shadow-sm hover:border-primary/30 transition-colors">
+                   <div className="flex items-center gap-3 mb-3"><div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl"><Download className="h-5 w-5" /></div><h3 className="font-black text-lg">Practical Templates</h3></div>
+                   <ul className="text-sm font-medium text-slate-600 space-y-1 ml-12 list-disc pl-4"><li>Ready-to-use formats</li><li>Excel sheets</li><li>Trackers and tools</li></ul>
+                </div>
+                <div className="bg-white border-2 border-slate-100 p-6 rounded-2xl shadow-sm hover:border-primary/30 transition-colors">
+                   <div className="flex items-center gap-3 mb-3"><div className="p-2 bg-purple-50 text-purple-600 rounded-xl"><Target className="h-5 w-5" /></div><h3 className="font-black text-lg">Assessments</h3></div>
+                   <ul className="text-sm font-medium text-slate-600 space-y-1 ml-12 list-disc pl-4"><li>Quizzes (concept + app)</li><li>Scenario-based questions</li><li>Real implementation tasks</li></ul>
+                </div>
+              </div>
+            </section>
+
+            {/* --- NEW CONTENT: Course Structure --- */}
             <section>
-              <h2 className="text-xl font-black mb-6 px-1">Course Content</h2>
+              <h2 className="text-xl font-black mb-2 px-1">Course Structure</h2>
+              <p className="text-slate-500 font-medium mb-6 px-1">This course is divided into 5 structured modules, each designed to build a complete financial system step-by-step.</p>
               <div className="space-y-3">
-                <div className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center justify-between hover:border-slate-200 transition-colors shadow-sm"><div className="flex items-center gap-4"><BookOpen className="h-5 w-5 text-slate-400" /><p className="font-bold text-slate-900">Module 1: Introduction & Setup</p></div><span className="hidden sm:block text-xs font-black text-slate-400 tracking-widest uppercase">4 lessons • 45m</span></div>
-                <div className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center justify-between hover:border-slate-200 transition-colors shadow-sm"><div className="flex items-center gap-4"><BookOpen className="h-5 w-5 text-slate-400" /><p className="font-bold text-slate-900">Module 2: Core Fundamentals</p></div><span className="hidden sm:block text-xs font-black text-slate-400 tracking-widest uppercase">8 lessons • 2h 15m</span></div>
+                {[
+                  "Module 1: Financial Planning & Data Structuring",
+                  "Module 2: Accounting System Setup",
+                  "Module 3: Loan Facilitation",
+                  "Module 4: Financial Control, Budgeting & Decision Making",
+                  "Module 5: Compliance & Regulatory System"
+                ].map((mod, index) => (
+                  <div key={index} className="bg-white border-2 border-slate-100 rounded-2xl p-5 flex items-center gap-4 hover:border-slate-200 transition-colors shadow-sm">
+                    <div className="h-8 w-8 rounded-full bg-slate-100 text-slate-500 font-black flex items-center justify-center shrink-0">{index + 1}</div>
+                    <p className="font-bold text-slate-900">{mod}</p>
+                  </div>
+                ))}
               </div>
             </section>
             
+            {/* Instructor Profile */}
             <section>
               <h2 className="text-xl font-black mb-6 px-1">Your Instructor</h2>
               <div className="flex items-center gap-5 p-6 bg-slate-50 rounded-3xl border border-slate-100">
@@ -106,7 +157,6 @@ export default function LmsCatalogPage() {
           </div>
 
           {/* RIGHT SIDE (Desktop) / TOP (Mobile): CHECKOUT CARD */}
-          {/* Using order-1 on mobile so the card sits above the title, but order-2 on desktop so it sits on the right */}
           <div className="w-full lg:w-[360px] shrink-0 order-1 lg:order-2 px-1 sm:px-0">
             <div className="lg:sticky top-24 space-y-4 bg-white rounded-[2rem] border-2 border-slate-100 shadow-2xl shadow-slate-200/50 overflow-hidden">
               
@@ -123,7 +173,6 @@ export default function LmsCatalogPage() {
               </div>
 
               <div className="p-6 md:p-8 pt-4 space-y-6">
-                {/* On mobile, we replicate the title briefly inside the card so they know what they are buying before scrolling down to the main title */}
                 <div className="lg:hidden block mb-4 border-b border-slate-100 pb-4">
                   <h2 className="text-xl font-black text-slate-900 leading-tight">{selectedCourse.title}</h2>
                 </div>
@@ -140,12 +189,11 @@ export default function LmsCatalogPage() {
                   {selectedCourse.price === "Free" ? "Enroll for Free" : "Buy Now & Enroll"}
                 </Button>
                 
-                <div className="text-center text-[10px] text-slate-400 font-black uppercase tracking-widest">30-Day Money-Back Guarantee</div>
-                
                 <div className="pt-6 border-t border-slate-100 space-y-4 text-sm font-semibold text-slate-600">
                   <p className="font-black text-slate-900">This course includes:</p>
-                  <div className="flex items-center gap-3"><Video className="h-4 w-4 text-slate-400" />8 hours of on-demand video</div>
-                  <div className="flex items-center gap-3"><Download className="h-4 w-4 text-slate-400" />14 downloadable resources</div>
+                  <div className="flex items-center gap-3"><Video className="h-4 w-4 text-slate-400" />Video Learning</div>
+                  <div className="flex items-center gap-3"><Download className="h-4 w-4 text-slate-400" />Practical Templates</div>
+                  <div className="flex items-center gap-3"><Target className="h-4 w-4 text-slate-400" />Assessments & Quizzes</div>
                   <div className="flex items-center gap-3"><Award className="h-4 w-4 text-slate-400" />Certificate of completion</div>
                 </div>
               </div>
