@@ -14,7 +14,7 @@ import { usePrototypeStore } from "@/store/use-prototype-store";
 const courses = [
   { id: 'FF-a01', title: "Financial Framework of Indian Education", instructor: "Mohit Gotecha", students: 340, progress: 65, type: 'academic', price: "Free", oldPrice: null },
   { id: 'phy-g9', title: "Grade 9 - Physics", instructor: "Ravi Kumar", students: 28, progress: 40, type: 'academic', price: "Free", oldPrice: null },
-  { id: 'ai-basics', title: "Advanced Python & AI Basics", instructor: "Mohit G.", students: 150, progress: 0, type: 'outskill', price: "₹2,500", oldPrice: "₹4,000" },
+  { id: 'ai-basics', title: "Financial Framework of Indian Education", instructor: "Mohit G.", students: 150, progress: 0, type: 'outskill', price: "₹2,500", oldPrice: "₹4,000" },
   { id: 'design-pro', title: "Graphic Design Masterclass", instructor: "Sarah P.", students: 85, progress: 0, type: 'outskill', price: "₹1,999", oldPrice: "₹4,999" },
 ];
 
