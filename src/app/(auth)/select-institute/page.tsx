@@ -22,7 +22,7 @@ export default function SelectInstitutePage() {
               <Building2 className="h-5 w-5" />
             </div>
             <div>
-              <p className="font-semibold text-slate-900">Delhi Public Educational Institute</p>
+              <p className="font-semibold text-slate-900">Acadfinity Public Educational Institute</p>
               <p className="text-xs text-slate-500">Role: Director</p>
             </div>
           </div>
