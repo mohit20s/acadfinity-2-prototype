@@ -13,14 +13,14 @@ export default function SolutionsPage() {
     },
     {
       icon: MonitorPlay,
-      title: "LMS: Structured Learning",
+      title: "Knowledge Hub Structured Learning",
       description: "Deliver engaging and structured learning journeys. Create courses, manage assignments, conduct assessments, and track student progress seamlessly.",
       features: ["Course & Content Uploads", "Online Assignments", "Digital Assessments", "Progress Tracking"],
       color: "teal"
     },
     {
       icon: ShoppingBag,
-      title: "Marketplace Procurement",
+      title: "Procurement Hub",
       description: "Simplify how your Educational Institute buys essentials. Procure everything from stationery and lab equipment to furniture and digital assets from verified vendors.",
       features: ["Verified Vendor Network", "Bulk Ordering Discounts", "Budget & Approval Flows", "Order Tracking"],
       color: "green"

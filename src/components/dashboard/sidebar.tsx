@@ -26,8 +26,8 @@ export function Sidebar() {
     name: "Learn",
     icon: BookOpen,
     subItems: [
-      { name: "Skill Academy (LMS)", href: "/lms", icon: BookOpen },
-      { name: "AI Diagnostics", href: "/diagnostics", icon: ClipboardCheck },
+      { name: "Knowledge Hub", href: "/lms", icon: BookOpen },
+      { name: "Diagnosis HUb", href: "/diagnostics", icon: ClipboardCheck },
     ]
   };
 
@@ -35,7 +35,7 @@ export function Sidebar() {
     name: "Explore",
     icon: AppWindow,
     subItems: [
-      { name: "Shop (Marketplace)", href: "/marketplace", icon: ShoppingBag },
+      { name: "Procurement Hub", href: "/marketplace", icon: ShoppingBag },
       { name: "Library (Subscription)", href: "/library", icon: Box },
       { name: "Wishlist", href: "#", icon: Heart },
     ]
