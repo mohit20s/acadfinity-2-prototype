@@ -115,7 +115,7 @@ export function SiteHeader() {
                 <Link href="/" className="relative text-[14px] font-black uppercase tracking-[0.2em] py-1 text-orange-500 group">
                   Home <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-orange-500 rounded-full"></span>
                 </Link>
-                <Link href="/library" className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Diagnostic</Link>
+                <Link href="/diagnostics" className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Diagnostic</Link>
                 <span className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all cursor-pointer">Service Deck</span>
 
                 {/* THE MEGA MENU TRIGGER */}
@@ -253,7 +253,7 @@ export function SiteHeader() {
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Main Menu</p>
                 <div className="flex flex-col gap-4">
                   <Link href="/" onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Home</Link>
-                  <Link href="/library" onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Diagnostic</Link>
+                  <Link href="/diagnostics"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Diagnostic</Link>
                   <span className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors cursor-pointer">Service Deck</span>
                 </div>
               </div>

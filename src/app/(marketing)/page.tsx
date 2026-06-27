@@ -124,7 +124,7 @@ export default function PublicCinematicHomePage() {
       {/* =========================================================
           1. HIGH-IMPACT CINEMATIC HERO SECTION
           ========================================================= */}
-      <section className="relative mt-5 pt-5 md:pt-0 lg:pt-16 pb-20 px-4 md:px-8 overflow-hidden">
+      <section className="relative mt-5 pt-28 lg:pt-32 pb-20 px-4 md:px-8 overflow-hidden">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-orange-500/10 rounded-full blur-[100px] md:blur-[120px] -z-10 animate-pulse pointer-events-none"></div>
 
         <div className="w-full max-w-[98%] 2xl:max-w-[1750px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">

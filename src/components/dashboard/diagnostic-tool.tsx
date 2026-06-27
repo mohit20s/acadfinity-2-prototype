@@ -1,61 +1,83 @@
 "use client";
 
-import { useState } from 'react';
-import { ArrowLeft, CheckCircle2, ClipboardCheck, BarChart, Lightbulb, Users, GraduationCap, Building, Lock, PlayCircle, Star, ArrowRight } from 'lucide-react';
+import { Activity, ArrowRight, ClipboardCheck, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
-// Diagnostic Plans
-const diagnosticPlans = [
-  { id: 'school', title: "Institute Health Check", target: "For Directors & Principals", price: "₹4,999", desc: "A complete AI audit of school operations, academics, and finances.", icon: Building, color: "blue" },
-  { id: 'teacher', title: "Educator Effectiveness", target: "For Teachers", price: "₹999", desc: "Analyze teaching methodologies and get personalized upskilling paths.", icon: Users, color: "emerald" },
-  { id: 'student', title: "Student Learning Gap", target: "For Students & Parents", price: "₹499", desc: "Identify academic weak points and get curated course recommendations.", icon: GraduationCap, color: "amber" },
+// Exact data matching your screenshot
+const templates = [
+  { id: 1, type: "SCHOOL", title: "School Health & Readiness Check", desc: "A complete 360-degree diagnostic for school operations, HR, Finance, and Governance.", highlight: false , url: "http://diagnostic.acadfinity.com/"  },
+  { id: 2, type: "INSTITUTE", title: "Coaching Institute Optimizer", desc: "Analyze batch management, test prep efficiency, and student retention for coaching centers.", highlight: false },
+  { id: 3, type: "INSTITUTE", title: "Executive Leadership Index", desc: "Evaluate strategic vision, compliance, and team trust for institutional leaders.", highlight: false },
+  { id: 4, type: "TEACHER", title: "Teacher Pedagogical Evaluation", desc: "Assess classroom management, tech integration, and remedial intervention capabilities.", highlight: false },
+  { id: 5, type: "STUDENT", title: "Student Academic & Wellbeing Profiler", desc: "Identify study habits, conceptual gaps, and mental wellbeing for personalized counseling.", highlight: false },
+  { id: 6, type: "PARENT", title: "Parent-School Harmony & Home Environment", desc: "Understand home study environments, screen time habits, and parental support structures.", highlight: true }, // Highlighted orange card
 ];
 
 export default function DiagnosticToolPage() {
-  const [step, setStep] = useState(0); // 0: Select Plan, 1: Pay/Start, 2-4: Questions, 5: Results
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [step, setStep] = useState(0); 
 
-  const totalSteps = 3;
-  const progress = step > 1 ? ((step - 1) / totalSteps) * 100 : 0;
-
+  // --- VIEW 1: THE HUB (Matches your screenshot exactly) ---
   if (step === 0) {
     return (
-      <div className="space-y-10 animate-in fade-in duration-500 pb-24">
-        
-        <section className="bg-slate-900 text-white rounded-3xl p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden shadow-2xl">
-          <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-          <div className="relative z-10 w-full text-center md:text-left">
-            <h1 className="text-3xl md:text-5xl font-black mb-4 tracking-tight leading-tight">AI-Powered<br/>Diagnostics Hub</h1>
-          </div>
-        </section>
+      <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-10 pb-20 px-1">
+        <header>
+          <p className="text-[10px] uppercase tracking-[0.3em] font-black text-orange-500 mb-3">Assessments</p>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
+            Platform <span className="italic">Diagnostics</span>
+          </h1>
+        </header>
 
-        <section className="space-y-6">
-          <div className="text-center md:text-left">
-             <h2 className="text-2xl font-black tracking-tight text-slate-900">Select Your Assessment</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {diagnosticPlans.map((plan) => (
-               <div key={plan.id} className="bg-white rounded-3xl border-2 border-slate-100 shadow-sm p-6 flex flex-col hover:border-primary/30 hover:shadow-xl transition-all group relative overflow-hidden">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className={cn("h-16 w-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110", plan.color === 'blue' ? "bg-blue-50 text-blue-600" : "bg-emerald-50 text-emerald-600")}>
-                      <plan.icon className="h-8 w-8" />
-                    </div>
-                    <span className="bg-slate-900 text-white px-4 py-1.5 rounded-full text-lg font-black shadow-md">{plan.price}</span>
-                  </div>
-                  <h3 className="font-black text-slate-900 text-xl leading-tight mb-3">{plan.title}</h3>
-                  <div className="mt-auto">
-                    <Button onClick={() => { setSelectedPlan(plan.id); setStep(1); }} className="w-full h-12 rounded-xl font-black shadow-md text-sm">
-                      Purchase & Start <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {templates.map((template) => (
+            <div 
+              key={template.id} 
+              className={cn(
+                "p-8 rounded-[2rem] flex flex-col justify-between min-h-[320px] bg-white transition-all duration-300", 
+                template.highlight ? "border-2 border-orange-500 shadow-xl shadow-orange-500/10 scale-[1.02]" : "border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1"
+              )}
+            >
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{template.type}</span>
+                  <Activity className="h-5 w-5 text-orange-500" strokeWidth={2.5} />
                 </div>
-            ))}
-          </div>
-        </section>
+                <h3 className="font-black text-xl text-slate-900 leading-tight mb-4">{template.title}</h3>
+                <p className="text-sm text-slate-500 font-medium leading-relaxed">{template.desc}</p>
+              </div>
+               <a href={template.url} target="_blank" rel="noopener noreferrer" className="mt-8 block">
+              <Button 
+               
+                className={cn(
+                  "w-full h-12 rounded-full font-black text-sm mt-8 transition-colors", 
+                  template.highlight ? "bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/30" : "bg-slate-900 hover:bg-slate-800 text-white"
+                )}
+              >
+                Start Assessment <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+                </a>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
 
-  return <div>Diagnostic Steps...</div>; // Simplified for brevity
+  // --- VIEW 2: SIMULATED ASSESSMENT PLAYER ---
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8 bg-white rounded-[3rem] border border-slate-100 shadow-2xl animate-in zoom-in-95 max-w-2xl mx-auto mt-10">
+       <div className="h-24 w-24 rounded-full bg-slate-900 text-orange-500 flex items-center justify-center mb-8 border-4 border-white shadow-xl">
+         <ClipboardCheck className="h-10 w-10" />
+       </div>
+       <h2 className="text-3xl font-black mb-4 text-slate-900 tracking-tight">Assessment Engine Loaded</h2>
+       <p className="text-slate-500 mb-10 font-medium text-lg">
+         The dynamic questionnaire for this specific stakeholder would begin here.
+       </p>
+       <Button onClick={() => setStep(0)} variant="outline" className="font-black h-14 px-10 rounded-full border-2 text-slate-600 hover:bg-slate-50">
+         <ArrowLeft className="h-4 w-4 mr-2" /> Back to Hub
+       </Button>
+    </div>
+  );
 }
