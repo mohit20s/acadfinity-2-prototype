@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, ArrowRight, ClipboardCheck, ArrowLeft } from 'lucide-react';
+import { Activity, ArrowRight, ClipboardCheck, ArrowLeft, BarChart3 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -15,7 +15,7 @@ const templates = [
   { id: 5, type: "STUDENT", title: "Student Academic & Wellbeing Profiler", desc: "Identify study habits, conceptual gaps, and mental wellbeing for personalized counseling.", highlight: false },
   { id: 6, type: "PARENT", title: "Parent-School Harmony & Home Environment", desc: "Understand home study environments, screen time habits, and parental support structures.", highlight: true }, // Highlighted orange card
 ];
-
+const REAL_DASHBOARD_URL = "https://diagnostic.acadfinity.com/login"; 
 export default function DiagnosticToolPage() {
   const [step, setStep] = useState(0); 
 
@@ -28,6 +28,11 @@ export default function DiagnosticToolPage() {
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
             Platform <span className="italic">Diagnostics</span>
           </h1>
+              <a href={REAL_DASHBOARD_URL} target="_blank" rel="noopener noreferrer" className="block w-full md:w-auto">
+          <Button className="w-full md:w-auto h-12 px-6 rounded-full font-black bg-slate-900 text-white shadow-lg hover:scale-105 transition-transform">
+            <BarChart3 className="h-4 w-4 mr-2" /> View Results Dashboard
+          </Button>
+        </a>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
