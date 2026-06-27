@@ -1,13 +1,17 @@
-import { GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 
-export const Logo = () => {
+export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2">
-      <GraduationCap className="h-7 w-7 text-primary" />
-      <span className="text-xl font-bold text-acad-blue-950 tracking-tight">
-        Acadfinity
-      </span>
+    <Link href="/" className="relative group flex items-center shrink-0">
+      {/* 
+        This uses your actual local logo file.
+        Adjust the 'h-10' (height) to make it larger or smaller as needed.
+      */}
+      <img 
+        src="/images/logo.png" 
+        alt="Acadfinity" 
+        className="h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+      />
     </Link>
   );
-};
+}
