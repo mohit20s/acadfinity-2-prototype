@@ -116,8 +116,8 @@ export function SiteHeader() {
                   Home <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-orange-500 rounded-full"></span>
                 </Link>
                 <Link href="/diagnostics" className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Diagnostic</Link>
-                <span className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all cursor-pointer">Service Deck</span>
-
+                <Link href="/lms"className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Knowleadge Hub</Link>
+<Link href="/service-hub"className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Service Hub</Link>
                 {/* THE MEGA MENU TRIGGER */}
                 <div className="relative" onMouseEnter={() => setMegaMenu(true)} onMouseLeave={() => setMegaMenu(false)}>
                   <Link href="/marketplace" className={cn("py-4 text-[14px] font-black uppercase tracking-[0.2em] transition-all flex items-center gap-2 group", megaMenu ? "text-orange-500" : "text-slate-500 hover:text-orange-500")}>
@@ -253,8 +253,10 @@ export function SiteHeader() {
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Main Menu</p>
                 <div className="flex flex-col gap-4">
                   <Link href="/" onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Home</Link>
-                  <Link href="/diagnostics"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Diagnostic</Link>
-                  <span className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors cursor-pointer">Service Deck</span>
+                  <Link href="/diagnostics"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Diagnostic Hub</Link>
+                   <Link href="/lms"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Knowleadge Hub</Link>
+                  <Link href="/service-hub"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Service Hub</Link>
+                 
                 </div>
               </div>
 
