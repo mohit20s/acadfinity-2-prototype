@@ -138,8 +138,8 @@ export function GlobalShortsPlayer() {
               <div className="h-8 w-8 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-black border-2 border-white shadow-lg pointer-events-auto cursor-pointer">AK</div>
               <span className="text-white font-black text-sm drop-shadow-md pointer-events-auto cursor-pointer">Arun Kumar</span>
             </div>
-            <h3 className="text-white font-black text-xl leading-tight drop-shadow-md">Mastering Python Loops 🐍</h3>
-            <p className="text-white/80 text-xs font-medium mt-2 max-w-[85%] line-clamp-2">Learn list comprehensions, lambda functions, and zip() in 60 seconds!</p>
+            <h3 className="text-white font-black text-xl leading-tight drop-shadow-md">Formative Childhood Parenting & Development</h3>
+            <p className="text-white/80 text-xs font-medium mt-2 max-w-[85%] line-clamp-2">Behavior, Bonding & Brain Development in 600 seconds!</p>
           </div>
           
           <div className="mt-4 p-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-white/20 transition-colors pointer-events-auto" 
@@ -149,7 +149,7 @@ export function GlobalShortsPlayer() {
             }}>
              <div className="flex items-center gap-3">
                <div className="h-10 w-10 rounded-xl bg-blue-500 flex items-center justify-center text-white shadow-inner"><FileText className="h-5 w-5" /></div>
-               <div><p className="text-white text-xs font-black">Python Masterclass</p><p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-0.5">Full Course</p></div>
+               <div><p className="text-white text-xs font-black">PARENT TRANSFORMATION PROGRAM</p><p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-0.5">Full Course</p></div>
              </div>
              <span className="text-slate-900 text-xs font-black bg-white px-5 py-2.5 rounded-full shadow-lg hover:scale-105 transition-transform">ENROLL</span>
           </div>
