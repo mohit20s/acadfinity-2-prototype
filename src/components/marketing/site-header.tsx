@@ -116,7 +116,7 @@ export function SiteHeader() {
                   Home <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-orange-500 rounded-full"></span>
                 </Link>
                 <Link href="/diagnostics" className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Diagnostic</Link>
-                <Link href="/lms"className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Knowleadge Hub</Link>
+                <Link href="/lms"className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Knowledge Hub</Link>
 <Link href="/service-hub"className="text-[14px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-orange-500 transition-all">Service Hub</Link>
                 {/* THE MEGA MENU TRIGGER */}
                 <div className="relative" onMouseEnter={() => setMegaMenu(true)} onMouseLeave={() => setMegaMenu(false)}>
@@ -254,7 +254,7 @@ export function SiteHeader() {
                 <div className="flex flex-col gap-4">
                   <Link href="/" onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Home</Link>
                   <Link href="/diagnostics"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Diagnostic Hub</Link>
-                   <Link href="/lms"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Knowleadge Hub</Link>
+                   <Link href="/lms"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Knowledge Hub</Link>
                   <Link href="/service-hub"  onClick={() => setMobileMenu(false)} className="text-3xl font-black text-slate-900 tracking-tighter hover:text-orange-500 transition-colors">Service Hub</Link>
                  
                 </div>

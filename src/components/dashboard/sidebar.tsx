@@ -26,7 +26,7 @@ export function Sidebar() {
     name: "Learn",
     icon: BookOpen,
     subItems: [
-      { name: "Diagnosis HUb", href: "/diagnostics", icon: ClipboardCheck },
+      { name: "Diagnositic HUb", href: "/diagnostics", icon: ClipboardCheck },
       { name: "Knowledge Hub", href: "/lms", icon: BookOpen },
       
     ]
