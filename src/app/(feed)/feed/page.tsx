@@ -11,7 +11,7 @@ const feedItems = [
   {
     id: 1, type: 'video', publisher: "Acadfinity Experts", publisherIcon: "A",
     title: "3 Python Tricks You Didn't Know Exist", time: "2h ago",
-    media: "/sample-video.mp4", // Using the local video!
+    media: "/MARKETING VIDEO.mp4", // Using the local video!
     likes: 120, isSponsored: false
   },
   {

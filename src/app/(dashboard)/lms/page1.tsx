@@ -175,7 +175,7 @@ export default function LmsCatalogPage() {
               {/* --- NEW: LOCAL VIDEO PLAYER --- */}
               <div className="aspect-video bg-slate-900 flex items-center justify-center relative group overflow-hidden">
                 <video 
-                  src="/sample-video.mp4" 
+                  src="/MARKETING VIDEO.mp4" 
                   autoPlay 
                   loop 
                   muted 

@@ -161,7 +161,7 @@ export default function SeekhoLessonPlayerPage() {
             ========================================= */}
         <div className={cn("relative w-full transition-all duration-500 ease-in-out bg-slate-900 z-10 flex flex-col", isFullscreen ? "h-[100dvh]" : isMaterialsOpen ? "h-[35vh]" : "h-[100dvh]")}>
           
-          <video ref={videoRef} src="/sample-video.mp4" autoPlay muted={isMuted} playsInline onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetadata} onEnded={handleVideoEnd} className="absolute inset-0 w-full h-full object-cover z-0 opacity-80" />
+          <video ref={videoRef} src="/Finance 1.1.mp4" autoPlay muted={isMuted} playsInline onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetadata} onEnded={handleVideoEnd} className="absolute inset-0 w-full h-full object-cover z-0 opacity-80" />
 
           {renderMCQ()}
           

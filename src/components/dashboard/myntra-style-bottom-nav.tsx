@@ -47,7 +47,8 @@ export function MyntraStyleBottomNav() {
   // EXPLORE TABS (Completely separate routes)
   const exploreItems: NavItem[] = [
     { name: "Home", href: "/dashboard", icon: Home, context: 'main' },
-    { name: "Shop", href: "/marketplace", icon: ShoppingBag, context: 'explore' }, // EXACT MATCH /marketplace
+    { name: "Shop", href: "/marketplace", icon: ShoppingBag, context: 'explore' },
+     { name: "Services", href: "/service-hub", icon: ClipboardCheck, context: 'explore' }, // EXACT MATCH /marketplace
     { name: "Library", href: "/library", icon: Box, context: 'explore' },          // EXACT MATCH /library
     { name: "Wishlist", href: "#", icon: Heart, context: 'explore' },
     { name: "Bag", href: "/marketplace", icon: ShoppingBag, context: 'explore', badge: 2 },

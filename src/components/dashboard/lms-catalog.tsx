@@ -162,7 +162,7 @@ export default function LmsCatalogPage() {
               
               <div className="aspect-video bg-slate-900 flex items-center justify-center relative group overflow-hidden">
                 <video 
-                  src="/sample-video.mp4" 
+                  src="/Course Overview Unlock Your Potential!.mp4" 
                   autoPlay loop muted playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 />

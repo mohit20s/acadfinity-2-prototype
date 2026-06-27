@@ -90,7 +90,7 @@ export function GlobalShortsPlayer() {
         {/* --- REAL VIDEO PLAYER --- */}
         <video 
           ref={videoRef}
-          src="/sample-video.mp4" 
+          src="/MARKETING VIDEO.mp4" 
           autoPlay 
           loop 
           muted={isMuted} // Controlled by state
