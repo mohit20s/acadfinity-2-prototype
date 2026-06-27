@@ -9,11 +9,11 @@ import Link from 'next/link';
 // Exact data matching your screenshot
 const templates = [
   { id: 1, type: "SCHOOL", title: "School Health & Readiness Check", desc: "A complete 360-degree diagnostic for school operations, HR, Finance, and Governance.", highlight: false , url: "http://diagnostic.acadfinity.com/"  },
-  { id: 2, type: "INSTITUTE", title: "Coaching Institute Optimizer", desc: "Analyze batch management, test prep efficiency, and student retention for coaching centers.", highlight: false },
+  { id: 6, type: "INSTITUTE", title: "Coaching Institute Optimizer", desc: "Analyze batch management, test prep efficiency, and student retention for coaching centers.", highlight: false },
   { id: 3, type: "INSTITUTE", title: "Executive Leadership Index", desc: "Evaluate strategic vision, compliance, and team trust for institutional leaders.", highlight: false },
   { id: 4, type: "TEACHER", title: "Teacher Pedagogical Evaluation", desc: "Assess classroom management, tech integration, and remedial intervention capabilities.", highlight: false },
   { id: 5, type: "STUDENT", title: "Student Academic & Wellbeing Profiler", desc: "Identify study habits, conceptual gaps, and mental wellbeing for personalized counseling.", highlight: false },
-  { id: 6, type: "PARENT", title: "Parent-School Harmony & Home Environment", desc: "Understand home study environments, screen time habits, and parental support structures.", highlight: true }, // Highlighted orange card
+  { id: 2, type: "PARENT", title: "Parent-School Harmony & Home Environment", desc: "Understand home study environments, screen time habits, and parental support structures.", highlight: true }, // Highlighted orange card
 ];
 const REAL_DASHBOARD_URL = "https://diagnostic.acadfinity.com/login"; 
 export default function DiagnosticToolPage() {
